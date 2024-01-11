@@ -13,5 +13,9 @@ respect du tour : un joueur ne peut pas jouer deux fois d’affilé
 Le joueur ne peut pas tirer avant de finir de déplacer les bateaux et commencer le jeu
 Le joueur ne peut plus placer des bateaux après le déplacement des bateaux
 
-Jeu Pacmann +: 
-Jeu Pacman en 1D 
+
+Jeu Pacman +: 
+Jeu Pacman en 1D, si le fantôme est en rouge il va te manger, si le joueur mange la grande pastille, le fantôme va devenir faible temporairement et tu peux le manger.
+Chaque pastille vaut 1 point
+Si le joueur mange le fantôme, ça vaut 10 points
+Après que le joueur mange la moitié des pastilles, une fruit va apparaître et ça vaut 20 points mais si le joueur mange tout les pastilles avant qu’il mange la fruit, la dernière va dispparaître
