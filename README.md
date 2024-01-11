@@ -19,3 +19,9 @@ Jeu Pacman en 1D, si le fantôme est en rouge il va te manger, si le joueur mang
 Chaque pastille vaut 1 point
 Si le joueur mange le fantôme, ça vaut 10 points
 Après que le joueur mange la moitié des pastilles, une fruit va apparaître et ça vaut 20 points mais si le joueur mange tout les pastilles avant qu’il mange la fruit, la dernière va dispparaître
+
+Identification des besoins :
+Attentes :
+Jouer en 1v1 en local
+Frustrations :
+Jouer en 1v1 en différentes appareils
