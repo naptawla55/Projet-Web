@@ -68,5 +68,3 @@
 - Sauvegarde du progrès ou score entre sessions.
 - Jouer en 1v1 sur différents appareils (Envisageable pour le futur).
 
-## Readme File on GitHub
-Bienvenue dans notre collection de jeux web ! Découvrez des expériences variées, de la stratégie de bataille navale à la mémoire stimulante, en passant par le frisson de Pacman en 1D. L'identification des besoins continue de guider notre développement, avec une vision d'une expérience de jeu sociale et conviviale. Rejoignez-nous dans cette aventure ludique !
