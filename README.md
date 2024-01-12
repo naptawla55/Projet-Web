@@ -90,3 +90,4 @@ Des jeux éducatifs qui sont éducatids et instructifs pour leurs enfants
 Frustrations:
 ils ont peu de temps pour jouers et peuvent être frustrés par des jeux qui demandesnt des sessions longs
 La complexité excessive peut rendre les jeux difficiles à comprendre et à jouer pour leurs enfants
+Ils peuvent être dérangés par des jeux qui manquent d'options de contrôle parental ou de sécurité pour leurs enfants.
