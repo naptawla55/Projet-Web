@@ -54,17 +54,34 @@
 - Fruit disparaît si toutes les pastilles sont mangées avant.
 - Stratégie : manger efficacement pour maximiser les points.
 
-## Jeu de Drapeaux
-### Gameplay :
-- Affichez un drapeau, devinez le pays correspondant.
-### Fonctionnalités :
-- Entrée utilisateur pour deviner le pays.
-- Vérification des réponses avec gestion des scores.
-- Nouveau drapeau après chaque réponse.
-### Bonus (Optionnel) :
-- Ajoutez une minuterie pour plus de compétitivité.
 ### Besoins :
 - Jouer en 1v1 en local.
 - Sauvegarde du progrès ou score entre sessions.
 - Jouer en 1v1 sur différents appareils (Envisageable pour le futur).
+
+#Persoans
+
+Pesrona 1 :
+Attentes (besoins) :
+Jouer en 1v1 en local pour défier ses amis
+Jouer en 1v1 en différentes appareils pour défier d’autre joueurs en ligne 
+Elle chercher un défi jouant conte des bots de difficultés différents 
+Des mécanismes de jeu qui récompensent la compétence et l'effort, plutôt que le hasard. 
+
+Frustrations :
+Elle trouve souvent les jeux répétitifs
+Elle trouve souvent les jeux manquent de la complexité stratégique 
+Ne pas pouvoir jouer sur d’autres appareils autre qu’un ordinateur
+Elle est contrariée par des fonctionnalités de jeu qui semblent déséquilibrées ou qui favorisent le hasard plutôt que la compétence.
+
+Persona 2:
+Attentes :
+Interface visuelle engageante
+Plus de bonus et des récompenses dans les jeux
+Des éléments de surprise comme l’apparence 
+
+Frustrations :
+Il trouve que la version en 1D manque de la diversité et de défis visuels
+il trouve que le jeu est un peu simple 
+il peut être frustré par la présence constante de fantôme
 
