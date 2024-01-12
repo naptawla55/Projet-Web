@@ -57,7 +57,7 @@
 
 #Persoans
 
-Pesrona 1 :
+Pesrona 1: (le Tryhard)
 Attentes (besoins) :
 Jouer en 1v1 en local pour défier ses amis
 Jouer en 1v1 en différentes appareils pour défier d’autre joueurs en ligne (Envisageable pour le futur)
@@ -70,7 +70,7 @@ Elle trouve souvent les jeux manquent de la complexité stratégique
 Ne pas pouvoir jouer sur d’autres appareils autre qu’un ordinateur
 Elle est contrariée par des fonctionnalités de jeu qui semblent déséquilibrées ou qui favorisent le hasard plutôt que la compétence.
 
-Persona 2:
+Persona 2: (gamer occasionnel)
 Attentes :
 Interface visuelle engageante
 Plus de bonus et des récompenses dans les jeux
@@ -78,7 +78,15 @@ Des éléments de surprise comme des niveaux cachés
 Des jeux simples avec des mécanismes faciles à comprendre.
 
 Frustrations :
-Il trouve que les jeux manque de la diversité et de défis visuels
-Il peut être dépassée par des jeux trop complexes ou qui demandent trop de temps d'apprentissage.
+Il trouve que les jeux sont généralement trop difficiles à comprendre 
 Sauvegarde du progrès ou score entre sessions.
 Il peut être frustrée par des jeux qui manquent de variété et d'éléments surprenants.
+
+Persona 3: (les parents)
+Attentes:
+Des jeux qui demandes pas trop de temps
+Des jeux éducatifs qui sont éducatids et instructifs pour leurs enfants
+
+Frustrations:
+ils ont peu de temps pour jouers et peuvent être frustrés par des jeux qui demandesnt des sessions longs
+La complexité excessive peut rendre les jeux difficiles à comprendre et à jouer pour leurs enfants
