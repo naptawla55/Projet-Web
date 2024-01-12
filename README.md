@@ -91,3 +91,38 @@ Persona 3: (les parents)
 - ils ont peu de temps pour jouers et peuvent être frustrés par des jeux qui demandesnt des sessions longs
 - La complexité excessive peut rendre les jeux difficiles à comprendre et à jouer pour leurs enfants
 - Ils peuvent être dérangés par des jeux qui manquent d'options de contrôle parental ou de sécurité pour leurs enfants.
+
+  ### Liste des Scénarios
+
+1. **Connexion :** 
+   - Je me connecte sur le site en utilisant l'identifiant unique ainsi que le mot de passe.
+
+2. **Choisir un Jeu :**
+   - Je sélectionne un jeu parmi les trois proposés sur la page principale.
+
+3. **Contrôle Parental :**
+   - En tant que parent, je peux accompagner mon enfant et mettre en place des mesures de contrôle parental.
+
+4. **Jouer contre un Bot :**
+   - Je suis capable de jouer contre un bot de difficulté variable dans l'ensemble des jeux proposés.
+
+5. **Défier des Amis :**
+   - Je peux défier mes amis en ligne ou sur un seul appareil.
+
+6. **Changement de Jeu :**
+   - Je peux facilement changer de jeu sans avoir à me reconnecter à chaque fois.
+
+7. **Mise en Sourdine :**
+   - Je suis capable de mettre les jeux en sourdine quand je suis en public.
+
+8. **Pause et Reprise :**
+   - Je suis capable de mettre en pause les jeux et de reprendre à n'importe quel moment.
+
+9. **Recommencer la Partie :**
+   - Je peux recommencer la partie à la fin d'une autre.
+
+10. **Consultation des Statistiques :**
+    - Je peux toujours consulter mes statistiques dans les jeux auxquels j'ai joué et les réinitialiser quand je le souhaite.
+
+11. **Choix de la Difficulté :**
+    - Je suis capable de choisir la difficulté des bots ou des défis proposés par les jeux.
