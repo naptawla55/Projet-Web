@@ -48,12 +48,36 @@ Chaque pastille vaut 1 point
 Si le joueur mange le fantôme, ça vaut 10 points
 Après que le joueur mange la moitié des pastilles, une fruit va apparaître et ça vaut 20 points mais si le joueur mange tout les pastilles avant qu’il mange la fruit, la dernière va dispparaître
 
+
+////Jeu de drapeaux 
+Récupération des données :
+
+Obtenez une liste de drapeaux de pays avec leurs noms. Vous pouvez utiliser des ressources telles que des API de drapeaux ou stocker les données localement.
+Affichage du drapeau :
+
+Affichez aléatoirement un drapeau parmi la liste.
+Assurez-vous que l'utilisateur voit le drapeau sans le nom du pays.
+Entrée utilisateur :
+
+Ajoutez un champ de texte où les utilisateurs peuvent entrer le nom du pays qu'ils pensent correspondre au drapeau.
+Vérification des réponses :
+
+Vérifiez si la réponse de l'utilisateur est correcte en comparant avec le nom réel du pays correspondant au drapeau.
+Gestion des scores :
+
+Suivez le score des utilisateurs en fonction du nombre de réponses correctes.
+Nouveau drapeau :
+
+Après chaque réponse, affichez un nouveau drapeau pour que l'utilisateur puisse continuer à jouer.
+Minuterie (optionnelle) :
+
+Ajoutez une minuterie pour rendre le jeu plus compétitif en limitant le temps accordé pour chaque devinette.
+
+
 ////Identification des besoins :
 Attentes :
 Jouer en 1v1 en local
 Frustrations :
 Jouer en 1v1 en différentes appareils
 etre capable de garder son progrés ou le score face a une certaine personne.
-
-
 
