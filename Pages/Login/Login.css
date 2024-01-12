@@ -1,0 +1,52 @@
+/* Style général pour le corps du document */
+body {
+    background-color: #2c3e50; /* Bleu foncé */
+    color: #ecf0f1; /* Blanc cassé */
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Style pour le conteneur de connexion */
+#login-container {
+    background-color: rgba(44, 62, 80, 0.9); /* Fond bleu foncé avec opacité */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Style pour le titre de la page de connexion */
+#login-container h2 {
+    color: #ecf0f1; /* Blanc cassé */
+}
+
+/* Style pour le formulaire de connexion */
+#login-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+/* Style pour les champs de saisie */
+#login-form input {
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #3498db; /* Bleu clair */
+    border-radius: 4px;
+}
+
+/* Style pour le bouton de connexion */
+#login-form button {
+    background-color: #2ecc71; /* Vert émeraude */
+    color: #fff;
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

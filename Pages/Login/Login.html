@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Login.css">
+    <title>Connexion - Site de Jeux en Ligne</title>
+</head>
+<body>
+
+    <div style="text-align: center; margin: 20vh auto; width: 300px; padding: 20px; border: 1px solid #ccc; border-radius: 8px;">
+        <!-- Logo image -->
+        <img src="yous.png" alt="Logo" style="width: 100px; height: 100px; margin-bottom: 20px;">
+
+        <h2>Connexion - Site de Jeux en Ligne</h2>
+        <form id="login-form">
+            <input type="text" id="username" placeholder="Nom d'utilisateur" required style="margin-bottom: 10px; padding: 8px; font-size: 16px; border: 1px solid #ccc; border-radius: 4px;">
+            <br>
+            <input type="password" id="password" placeholder="Mot de passe" required style="margin-bottom: 10px; padding: 8px; font-size: 16px; border: 1px solid #ccc; border-radius: 4px;">
+            <br>
+            <button type="submit" onclick="performLogin()" style="background-color: #4caf50; color: #fff; padding: 10px; font-size: 18px; border: none; border-radius: 4px; cursor: pointer;">Se Connecter</button>
+        </form>
+    </div>
+
+    <script>
+        function performLogin() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            console.log("Tentative de connexion avec Nom d'utilisateur:", username, "Mot de passe:", password);
+        }
+    </script>
+
+</body>
+</html>
