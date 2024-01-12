@@ -54,18 +54,14 @@
 - Fruit disparaît si toutes les pastilles sont mangées avant.
 - Stratégie : manger efficacement pour maximiser les points.
 
-### Besoins :
-- Jouer en 1v1 en local.
-- Sauvegarde du progrès ou score entre sessions.
-- Jouer en 1v1 sur différents appareils (Envisageable pour le futur).
 
 #Persoans
 
 Pesrona 1 :
 Attentes (besoins) :
 Jouer en 1v1 en local pour défier ses amis
-Jouer en 1v1 en différentes appareils pour défier d’autre joueurs en ligne 
-Elle chercher un défi jouant conte des bots de difficultés différents 
+Jouer en 1v1 en différentes appareils pour défier d’autre joueurs en ligne (Envisageable pour le futur)
+Elle chercher un défi jouant contre des bots de difficultés différents 
 Des mécanismes de jeu qui récompensent la compétence et l'effort, plutôt que le hasard. 
 
 Frustrations :
@@ -78,10 +74,11 @@ Persona 2:
 Attentes :
 Interface visuelle engageante
 Plus de bonus et des récompenses dans les jeux
-Des éléments de surprise comme l’apparence 
+Des éléments de surprise comme des niveaux cachés
+Des jeux simples avec des mécanismes faciles à comprendre.
 
 Frustrations :
-Il trouve que la version en 1D manque de la diversité et de défis visuels
-il trouve que le jeu est un peu simple 
-il peut être frustré par la présence constante de fantôme
-
+Il trouve que les jeux manque de la diversité et de défis visuels
+Il peut être dépassée par des jeux trop complexes ou qui demandent trop de temps d'apprentissage.
+Sauvegarde du progrès ou score entre sessions.
+Il peut être frustrée par des jeux qui manquent de variété et d'éléments surprenants.
