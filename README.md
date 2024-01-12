@@ -58,7 +58,7 @@
 #Persoans
 
 Pesrona 1: (le Tryhard)
-Attentes (besoins) :
+Attentes :
 - Jouer en 1v1 en local pour défier ses amis
 - Jouer en 1v1 en différentes appareils pour défier d’autre joueurs en ligne (Envisageable pour le futur)
 - Elle chercher un défi jouant contre des bots de difficultés différents 
