@@ -77,6 +77,7 @@ Persona 2: (gamer occasionnel)
 - Plus de bonus et des récompenses dans les jeux
 - Des éléments de surprise comme des niveaux cachés
 - Des jeux simples avec des mécanismes faciles à comprendre.
+- un tableau de score
 
 ### Frustrations :
 - Il trouve que les jeux sont généralement trop difficiles à comprendre 
