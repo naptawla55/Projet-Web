@@ -62,7 +62,8 @@ Pesrona 1: (le Tryhard)
 - Jouer en 1v1 en local pour défier ses amis
 - Jouer en 1v1 en différentes appareils pour défier d’autre joueurs en ligne (Envisageable pour le futur)
 - Elle chercher un défi jouant contre des bots de difficultés différents 
-- Des mécanismes de jeu qui récompensent la compétence et l'effort, plutôt que le hasard. 
+- Des mécanismes de jeu qui récompensent la compétence et l'effort, plutôt que le hasard.
+- Elle avoir une magasin de jeux pour acheter d'autre jeux
 
 ### Frustrations :
 - Elle trouve souvent les jeux répétitifs
