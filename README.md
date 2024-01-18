@@ -128,3 +128,10 @@ Persona 3: (les parents)
 
 11. **Choix de la Difficulté :**
     - Je suis capable de choisir la difficulté des bots ou des défis proposés par les jeux.
+
+
+## le lien pour le figma:
+https://www.figma.com/file/Kv3doqoLB0QXMM8KhqHRbX/Untitled?type=design&node-id=0%3A1&mode=design&t=ow6zWXhVGzzc4YD6-1
+
+## le lien de modéle de tâches:
+https://app.diagrams.net/#G1DkkCeZX4frdzelCw0kWK56ikdbQU5F1D
