@@ -1,5 +1,11 @@
-les choix qu'on a choisi pour la maquette de la page HTML:
-# On a choisi de faire une page d'acceuil simple avec un header qui contient le logo du site, la boutique, et un log in
-# un slideshow manuel où tu peux choisir d'afficher les détails ou lancer l'un des trois jeux
-# on a essayé de simplifier pour le client le choix des jeux et rendre les choses claires 
-# une page login avec un id et mot de passe stocké et la possibilité de télécharger l'application family pour garder l'œil sur les activités des enfants 
+1. Nous avons opté pour une **page d'accueil épurée**, arborant un en-tête comprenant le **logo distinctif du site**, un accès direct à la **boutique**, et une fonctionnalité de **connexion**.
+
+2. Un **Shop ** a été intégré, offrant aux utilisateurs la possibilité de consulter les détails des produits, tout en leur permettant de lancer l'un des trois jeux disponibles à leur guise.
+
+3. Dans un souci de convivialité pour les clients, nous avons **simplifié le processus de sélection des jeux**, veillant à la clarté des informations présentées.
+
+4. La **page de connexion** a été soigneusement conçue, incluant une interface sécurisée pour les identifiants et mots de passe, ainsi qu'une option de téléchargement de l'application **Family**, offrant un moyen pratique de surveiller les activités des enfants.
+
+5. Une **boutique interactive** a été mise en place, offrant aux joueurs la possibilité d'utiliser les points gagnés pour acquérir des articles de jeu exclusifs ou même débloquer de nouveaux jeux passionnants.
+
+6. Une section dédiée permet aux joueurs de suivre le **statut d'activité de leurs amis**, favorisant ainsi une expérience sociale et collaborative au sein de la plateforme.
