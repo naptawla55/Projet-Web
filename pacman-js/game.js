@@ -56,11 +56,61 @@ let gameLoop = () => {
 let update = () => {
     pacman.moveProcess();
 };
+
+let drawFood = () => {
+    for( let i = 0 ; i < map.length ; i++) {
+        for( let j = 0 ; j < map[0].length; j++) {
+            if(map[i][j] == 2) {
+                //then it's a food
+                createRect(j * oneBlockSize + oneBlockSize / 2,
+                           i * oneBlockSize + oneBlockSize / 2,
+                           oneBlockSize / 5,
+                           oneBlockSize / 5,
+                           "white" );
+            }
+        }
+    }
+
+}
   
+
+let eatfood = () => {
+    for( let i = 0 ; i < map.length ; i++) {
+        for( let j = 0 ; j < map[0].length; j++) {
+            if(map[i][j] == 2) {
+                //then it's a food
+                if(pacman.x + pacman.width / 2 > j * oneBlockSize &&
+                    pacman.x + pacman.width / 2 < j * oneBlockSize + oneBlockSize &&
+                    pacman.y + pacman.height / 2 > i * oneBlockSize &&
+                    pacman.y + pacman.height / 2 < i * oneBlockSize + oneBlockSize) {
+                        map[i][j] = 0;
+                    }
+            }
+        }
+    }
+}
+
+let createScore = () => {
+    let score = 0;
+    for( let i = 0 ; i < map.length ; i++) {
+        for( let j = 0 ; j < map[0].length; j++) {
+            if(map[i][j] == 0) {
+                score++;
+            }
+        }
+    }
+    canvasContext.fillStyle = "white";
+    canvasContext.font = "30px Arial";
+    canvasContext.fillText("Score: " + score, 10, 30);
+}
+
 let draw = () => {
     createRect(0,0, canvas.width, canvas.height, "black");
     //todo
     drawWalls();
+    drawFood();
+    eatfood();
+    createScore();
     pacman.draw();
 };
 
