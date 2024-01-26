@@ -82,12 +82,17 @@ class Pacman {
 
     changeDirectionIfPossible() {
         // fontion qui change la direction si il n'y a pas de collision
-        if(this.direction == DIRECTION_RIGHT || this.direction == DIRECTION_LEFT) {
-            if(this.nextDirection == DIRECTION_UP || this.nextDirection == DIRECTION_BOTTOM) {
-                if(this.checkCollision()) {
-                    this.direction = this.nextDirection;
-                }
-            }
+        if (this.direction == this.nextDirection) {
+            return;
+        }
+        let tempDirection = this.direction;
+        this.direction = this.nextDirection;
+        this.moveForwards();
+        if(this.checkCollision()) {
+            this.moveBackwards();
+            this.direction = tempDirection;
+        } else {
+            this.moveBackwards();
         }
     }
     
