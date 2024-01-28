@@ -1,0 +1,111 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #000; 
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-container {
+  background-color: #f2d600; 
+  padding: 20px;
+  width: 300px; 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin: 16px;
+  text-align: center;
+}
+
+.login-header img {
+  width: 50px; 
+  margin-bottom: 16px;
+}
+
+.login-header h1 {
+  margin-bottom: 24px;
+  color: #333; 
+  font-size: 1.2rem; 
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: none;
+  border-radius: 4px;
+}
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: none;
+  border-radius: 4px;
+}
+
+
+.login-form button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff; 
+  color: white;
+  margin-bottom: 16px;
+}
+.social-login button.facebook {
+  background-color: #1877f2; 
+  color: white; 
+}
+
+.social-login button.twitter {
+  background-color: #1da1f2; 
+  color: white; 
+}
+
+.social-login button.google {
+  background-color: #db4437; 
+  color: white; 
+}
+
+.separator {
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.social-login button {
+  width: calc(33.333% - 8px);
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 8px;
+  background-color: #ddd; 
+}
+
+.social-login button:last-child {
+  margin-right: 0;
+}
+
+.download-section {
+  text-align: center;
+  margin-top: 32px;
+}
+
+.download-section img {
+  width: 50px; 
+  margin-bottom: 16px;
+}
+
+.download-section p {
+  color: white;
+  margin-bottom: 16px;
+}
+
+.download-section button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #28a745; 
+  color: white;
+}

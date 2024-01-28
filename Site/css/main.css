@@ -1,0 +1,140 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Navbar styles */
+  .navbar {
+    background-color: #000000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+  
+  .logo {
+    color: #FFEB3B;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .nav-links {
+    display: flex;
+  }
+  
+  .nav-item {
+    color: #FFEB3B;
+    text-decoration: none;
+    margin-left: 2rem;
+    font-size: 1rem;
+  }
+  
+  .connect-button {
+    background-color: #FFEB3B;
+    color: #000000;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  /* Main Content */
+  .main-content {
+    text-align: center;
+    color: white;
+  }
+  
+  .banner {
+    position: relative;
+  }
+  
+  .banner-image {
+    width: 100%;
+    height: auto;
+  }
+  
+  .banner-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  /* Play Section */
+  .play-section {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 2rem;
+  }
+  
+  .play-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .play-description {
+    margin-bottom: 2rem;
+  }
+  
+  .play-button {
+    background-color: #FFEB3B;
+    color: #000000;
+    border: none;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  /* Carousel Indicators */
+  .carousel-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  .indicator {
+    width: 1rem;
+    height: 1rem;
+    background-color: #555;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 0.25rem;
+  }
+  
+  .indicator.active {
+    background-color: #FFEB3B;
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: #000000;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 1rem 0;
+    position: relative; /* Adjusted from absolute to relative */
+    bottom: 0;
+    width: 100%;
+  }
+  .footer-content p {
+    margin: 0.5rem 0;
+    font-size: 0.875rem; /* Stylish font size */
+  }
+  
+.privacy-policy {
+    color: #FFEB3B;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 0.5rem;
+    display: inline-block; /* To enable margin-top */
+  }
+  
