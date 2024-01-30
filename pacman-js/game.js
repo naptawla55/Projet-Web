@@ -14,6 +14,7 @@ let wallColor = "#342DCA";
 let wallSpaceWidth = oneBlockSize / 1.5;
 let WallOffset = (oneBlockSize - wallSpaceWidth) / 2;
 let wallInnerColor = "black"
+let ghosts = [];
  
 // direction constants for pacman
 const DIRECTION_RIGHT = 4;
@@ -21,6 +22,13 @@ const DIRECTION_UP = 3;
 const DIRECTION_LEFT = 2;
 const DIRECTION_BOTTOM = 1;
 
+
+let ghostLocations = [
+    { x: 0, y: 0 },
+    { x: 176, y: 0 },
+    { x: 0, y: 121 },
+    { x: 176, y: 121 },
+];
 
 let map = [
     [1, 1, 1, 1,  1, 1, 1, 1, 1 , 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -62,22 +70,38 @@ let drawFood = () => {
         for( let j = 0 ; j < map[0].length; j++) {
             if(map[i][j] == 2) {
                 //then it's a food
-                createRect(j * oneBlockSize + oneBlockSize / 2,
-                           i * oneBlockSize + oneBlockSize / 2,
-                           oneBlockSize / 5,
-                           oneBlockSize / 5,
+                createRect(j * oneBlockSize + oneBlockSize / 2.5,
+                           i * oneBlockSize + oneBlockSize / 2.5,
+                           oneBlockSize / 4,
+                           oneBlockSize / 4,
                            "white" );
             }
         }
     }
+}
 
+
+
+let drawBiggestFood = () => {
+    for( let i = 0 ; i < map.length ; i++) {
+        for( let j = 0 ; j < map[0].length; j++) {
+            if(map[i][j] == 3) {
+                //then it's a food
+                createRect(j * oneBlockSize + oneBlockSize / 2,
+                           i * oneBlockSize + oneBlockSize / 2,
+                           oneBlockSize / 3,
+                           oneBlockSize / 3,
+                           "Red" );
+            }
+        }
+    }
 }
   
 
 let eatfood = () => {
     for( let i = 0 ; i < map.length ; i++) {
         for( let j = 0 ; j < map[0].length; j++) {
-            if(map[i][j] == 2) {
+            if(map[i][j] == 2 || map[i][j] == 3) {
                 //then it's a food
                 if(pacman.x + pacman.width / 2 > j * oneBlockSize &&
                     pacman.x + pacman.width / 2 < j * oneBlockSize + oneBlockSize &&
@@ -91,24 +115,27 @@ let eatfood = () => {
 }
 
 let createScore = () => {
-    let score = 0;
+    let score = 0 - 25;  // to improve
     for( let i = 0 ; i < map.length ; i++) {
         for( let j = 0 ; j < map[0].length; j++) {
+            
             if(map[i][j] == 0) {
                 score++;
             }
         }
     }
-    canvasContext.fillStyle = "white";
-    canvasContext.font = "30px Arial";
-    canvasContext.fillText("Score: " + score, 10, 30);
+    canvasContext.fillStyle = "red";
+    canvasContext.font = "30px Emulogic";
+    canvasContext.fillText("Score: " + score, 0, oneBlockSize * map.length + 20);
 }
+
 
 let draw = () => {
     createRect(0,0, canvas.width, canvas.height, "black");
     //todo
     drawWalls();
     drawFood();
+    drawBiggestFood();
     eatfood();
     createScore();
     pacman.draw();
@@ -170,7 +197,16 @@ let drawWalls = () => {
 let createNewpacman = () => {
     pacman = new Pacman(oneBlockSize, oneBlockSize, oneBlockSize, oneBlockSize, oneBlockSize / 5);
     // this sunction will be called when the game starts and when pacman dies
-}
+};
+
+let createGhosts = () => {
+    ghosts = [];
+    for(let i = 0 ; i < 1 ; i++) {
+       let newghost = new Ghost(oneBlockSize * 9 + (i % 2 == 0 ? 0 : 1) * oneBlockSize, 
+       1 * oneBlockSize + (i % 2 == 0 ? 0 : 1) * oneBlockSize, oneBlockSize, oneBlockSize, pacman.speed/2, ghostLocations[ i54
+         % 4 ].x, ghostLocations[ i % 4 ].y);
+    };
+};
 
 createNewpacman();
 gameLoop();
