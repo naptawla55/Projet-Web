@@ -10,27 +10,29 @@
 <header>
     <nav>
         <div id="logo">
-            <a href="#">
+            <!-- Modification ici pour rediriger vers main.html -->
+            <a href="main.html">
                 <img src="assets/jpg.jpg" alt="Logo de My Games">
             </a>
         </div>
         <h1 id="main-title">Boutique</h1>
-        <button id="login">connecter</button>
+        <button id="login" onclick="window.location.href='login.html';">connecter</button>
+    </nav>
     </nav>
 </header>
 <main>
     <section id="games">
         <h2>Disponible maintenant</h2>
         <div class="game-grid">
-            <div class="game" id="game1"><img src="assets/2.jpg" alt="Jeux 1"></div>
-            <div class="game" id="game2"><img src="assets/3.jpg" alt="Jeux 2"></div>
-            <div class="game" id="game3"><img src="assets/4.jpg" alt="Jeux 3"></div>
-            <div class="game" id="game4"><img src="assets/farm.jpg" alt="Jeux 4"></div>
+            <div class="game" id="game1"><img src="assets/2.jpg" alt="Jeux 1"><p class="price">1200 points</p></div>
+            <div class="game" id="game2"><img src="assets/3.jpg" alt="Jeux 2"><p class="price">1500 points</p></div>
+            <div class="game" id="game3"><img src="assets/4.jpg" alt="Jeux 3"><p class="price">1000 points</p></div>
+            <div class="game" id="game4"><img src="assets/farm.jpg" alt="Jeux 4"><p class="price">800 points</p></div>
         </div>
         <h2>À venir</h2>
         <div class="game-grid">
-            <div class="game" id="game5"><img src="assets/tb.jpg" alt="Jeux 5"></div>
-            <div class="game" id="game6"><img src="assets/tbtb.jpg" alt="Jeux 6"></div>
+            <div class="game" id="game5"><img src="assets/tb.jpg" alt="Jeux 5"><p class="price">2000 points</p></div>
+            <div class="game" id="game6"><img src="assets/tbtb.jpg" alt="Jeux 6"><p class="price">2500 points</p></div>
         </div>
     </section>
 </main>
