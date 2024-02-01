@@ -15,12 +15,15 @@ let wallSpaceWidth = oneBlockSize / 1.5;
 let WallOffset = (oneBlockSize - wallSpaceWidth) / 2;
 let wallInnerColor = "black"
 let ghosts = [];
+let ghostCount = 4;
  
 // direction constants for pacman
 const DIRECTION_RIGHT = 4;
 const DIRECTION_UP = 3;
 const DIRECTION_LEFT = 2;
 const DIRECTION_BOTTOM = 1;
+
+
 
 
 let ghostLocations = [
@@ -32,10 +35,10 @@ let ghostLocations = [
 
 let map = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-    [1, 2, 1, 1, 1, 2, 1, 1, 1, 3, 1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1],
-    [1, 2, 1, 1, 1, 2, 1, 1, 1, 3, 1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1],
-    [1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1],
+    [1, 3, 1, 1, 1, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 1, 1, 3, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
     [1, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 1],
     [1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1],
     [1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1],
@@ -47,13 +50,20 @@ let map = [
     [0, 0, 0, 0, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 0, 0, 0, 0],
     [1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1, 1, 1],
     [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-    [1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1],
-    [1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1],
+    [1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 1, 1, 3, 1],
+    [1, 3, 2, 2, 1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1],
     [1, 1, 2, 2, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 1, 2, 2, 1, 1],
     [1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1],
     [1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1],
     [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+];
+
+let randomTargetsForGhosts = [
+    { x: 1 * oneBlockSize, y: 1 * oneBlockSize },
+    { x: 1 * oneBlockSize, y: (map.length -2) * oneBlockSize },
+    { x: (map[0].length - 2) * oneBlockSize, y: oneBlockSize },
+    { x: (map[0].length - 2) * oneBlockSize, y: (map.length -2) * oneBlockSize },
 ];
 
 let gameLoop = () => {
@@ -63,6 +73,9 @@ let gameLoop = () => {
 
 let update = () => {
     pacman.moveProcess();
+    for(let i = 0 ; i < ghosts.length ; i++) {
+        ghosts[i].moveProcess();
+    }
 };
 
 let drawFood = () => {
@@ -131,7 +144,11 @@ let createScore = () => {
     canvasContext.fillText("Score: " + score, 0, oneBlockSize * map.length + 20);
 }
 
-
+let drawGhosts = () => {
+    for(let i = 0 ; i < ghosts.length ; i++) {
+        ghosts[i].draw();
+    }
+}
 
 let draw = () => {
     createRect(0,0, canvas.width, canvas.height, "black");
@@ -142,6 +159,7 @@ let draw = () => {
     eatfood();
     createScore();
     pacman.draw();
+    drawGhosts();
 };
 
 let gameInterval = setInterval(gameLoop, 1000 / fps);
@@ -206,16 +224,18 @@ let createNewpacman = () => {
     // this sunction will be called when the game starts and when pacman dies
 };
 
+
 let createGhosts = () => {
     ghosts = [];
-    for(let i = 0 ; i < 1 ; i++) {
+    for(let i = 0 ; i < ghostCount ; i++) {
        let newghost = new Ghost(oneBlockSize * 9 + (i % 2 == 0 ? 0 : 1) * oneBlockSize, 
-       1 * oneBlockSize + (i % 2 == 0 ? 0 : 1) * oneBlockSize, oneBlockSize, oneBlockSize, pacman.speed/2, ghostLocations[ i54
-         % 4 ].x, ghostLocations[ i % 4 ].y);
+       10 * oneBlockSize + (i % 2 == 0 ? 0 : 1) * oneBlockSize, oneBlockSize, oneBlockSize, pacman.speed/2, ghostLocations[ i % 4 ].x, ghostLocations[ i % 4 ].y, 124, 116, 6 + i);
+       ghosts.push(newghost);
     };
 };
 
 createNewpacman();
+createGhosts();
 gameLoop();
 
 
