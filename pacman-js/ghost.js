@@ -158,55 +158,58 @@ class Ghost {
                 for (let i = 0; i < neighbours.length; i++) {
                     queue.push(neighbours[i]);
                 }
-            }
+                // il faut aussi pop la queue pour ne pas avoir de boucle infinie
+                queue.pop();
+            }        
         }
-        return this.direction;
+        return 1.
     }
 
-    addNeighbors(poped, mp) {
+    addNeighbors(current, mp) {
         // fonction qui ajoute les voisins dans la queue
         let queue = [];
         let numOfRows = mp.length;
-        let numOfColumns = mp[0].length;
+        let numOfColumns = numOfRows;  
         // si on peut aller à gauche et que la case à gauche n'est pas un mur
         if (
-            poped.x - 1 >= 0 &&
-            poped.x - 1 < numOfRows &&
-            mp[poped.y][poped.x - 1] != 1
+        
+            current.x - 1 >= 0 &&
+            current.x - 1 < numOfRows &&
+            mp[current.y][current.x - 1] != 1
         ) {
-            let tempMoves = poped.moves.slice();
+            let tempMoves = current.moves.slice();
             tempMoves.push(DIRECTION_LEFT);
-            queue.push({ x: poped.x - 1, y: poped.y, moves: tempMoves });
+            queue.push({ x: current.x - 1, y: current.y, moves: tempMoves });
         }
         // si on peut aller à droite et que la case à droite n'est pas un mur
         if (
-            poped.x + 1 >= 0 &&
-            poped.x + 1 < numOfRows &&
-            mp[poped.y][poped.x + 1] != 1
+            current.x + 1 >= 0 &&
+            current.x + 1 < numOfRows &&
+            mp[current.y][current.x + 1] != 1
         ) {
-            let tempMoves = poped.moves.slice();
+            let tempMoves = current.moves.slice();
             tempMoves.push(DIRECTION_RIGHT);
-            queue.push({ x: poped.x + 1, y: poped.y, moves: tempMoves });
+            queue.push({ x: current.x + 1, y: current.y, moves: tempMoves });
         }
         // si on peut aller en haut et que la case en haut n'est pas un mur
         if (
-            poped.y - 1 >= 0 &&
-            poped.y - 1 < numOfColumns &&
-            mp[poped.y - 1][poped.x] != 1
+            current.y - 1 >= 0 &&
+            current.y - 1 < numOfColumns &&
+            mp[current.y - 1][current.x] != 1
         ) {
-            let tempMoves = poped.moves.slice();
+            let tempMoves = current.moves.slice();
             tempMoves.push(DIRECTION_UP);
-            queue.push({ x: poped.x, y: poped.y - 1, moves: tempMoves });
+            queue.push({ x: current.x, y: current.y - 1, moves: tempMoves });
         }
         // si on peut aller en bas et que la case en bas n'est pas un mur
         if (
-            poped.y + 1 >= 0 &&
-            poped.y + 1 < numOfColumns &&
-            mp[poped.y + 1][poped.x] != 1
+            current.y + 1 >= 0 &&
+            current.y + 1 < numOfColumns &&
+            mp[current.y + 1][current.x] != 1
         ) {
-            let tempMoves = poped.moves.slice();
+            let tempMoves = current.moves.slice();
             tempMoves.push(DIRECTION_BOTTOM);
-            queue.push({ x: poped.x, y: poped.y + 1, moves: tempMoves });
+            queue.push({ x: current.x, y: current.y + 1, moves: tempMoves });
         }
         return queue;
     }
