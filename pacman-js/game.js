@@ -227,11 +227,21 @@ let createNewpacman = () => {
 
 let createGhosts = () => {
     ghosts = [];
-    for(let i = 0 ; i < ghostCount ; i++) {
-       let newghost = new Ghost(oneBlockSize * 9 + (i % 2 == 0 ? 0 : 1) * oneBlockSize, 
-       10 * oneBlockSize + (i % 2 == 0 ? 0 : 1) * oneBlockSize, oneBlockSize, oneBlockSize, pacman.speed/1, ghostLocations[ i % 4 ].x, ghostLocations[ i % 4 ].y, 124, 116, 6 + i);
-       ghosts.push(newghost);
-    };
+    for(let i = 0 ; i < 5 ; i++) {
+        let newghost = new Ghost(
+            9 * oneBlockSize + (i % 2 == 0 ? 0 : 1) * oneBlockSize, 
+            10 * oneBlockSize + (i % 2 == 0 ? 0 : 1) * oneBlockSize, 
+            oneBlockSize, 
+            oneBlockSize, 
+            pacman.speed/2, 
+            ghostLocations[ i % 4 ].x, 
+            ghostLocations[ i % 4 ].y, 
+            124, 
+            116, 
+            6 + i
+        );
+        ghosts.push(newghost);
+    }
 };
 
 createNewpacman();

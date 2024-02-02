@@ -41,7 +41,8 @@ class Ghost {
     }
 
     eat() {
-
+        // fonction qui gère la collision avec pacman
+        
     }
 
     moveForwards() {
@@ -129,11 +130,11 @@ class Ghost {
         }
     }
 
-    calculateDirection (map, targetX, targetY) {
+    calculateDirection(map, targetX, targetY) {
         // fonction qui calcule la direction à prendre pour aller vers la cible
         let mp = [];
-        for(let i = 0; i < map.length; i++) {
-            mp[i] = [i].slice();
+        for (let i = 0; i < map.length; i++) {
+            mp[i] = map[i].slice();
         }
         // on met les murs dans la matrice mp pour ne pas les prendre en compte
         let queue = [
@@ -142,14 +143,14 @@ class Ghost {
                 y: this.getMapY(),
                 rightX: this.getMapXRightSide(),
                 rightY: this.getMapYRightSide(),
-                moves: []
+                moves: [],
             },
         ];
         // on parcourt la queue tant qu'elle n'est pas vide et on ajoute les voisins dans la queue 
-        while(queue.length > 0) {
+        while (queue.length > 0) {
             let current = queue.shift();
             // si on est arrivé à la cible on retourne la première direction
-            if(current.x == targetX && current.y == targetY) {
+            if (current.x == targetX && current.y == targetY) {
                 return current.moves[0];
             } else {
                 // sinon on marque la case comme visitée et on ajoute les voisins dans la queue
@@ -158,21 +159,19 @@ class Ghost {
                 for (let i = 0; i < neighbours.length; i++) {
                     queue.push(neighbours[i]);
                 }
-                // il faut aussi pop la queue pour ne pas avoir de boucle infinie
-                queue.pop();
-            }        
+            }
         }
-        return 1.
+        // si pacman est pas atteignable le fantome circule aléatoirement
+        return this.direction;
     }
-
+    
     addNeighbors(current, mp) {
         // fonction qui ajoute les voisins dans la queue
         let queue = [];
         let numOfRows = mp.length;
-        let numOfColumns = numOfRows;  
+        let numOfColumns = mp[0].length; // Fix this line to get the correct number of columns
         // si on peut aller à gauche et que la case à gauche n'est pas un mur
         if (
-        
             current.x - 1 >= 0 &&
             current.x - 1 < numOfRows &&
             mp[current.y][current.x - 1] != 1
@@ -213,7 +212,7 @@ class Ghost {
         }
         return queue;
     }
-
+    
     
     
     
