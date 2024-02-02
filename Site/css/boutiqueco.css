@@ -1,0 +1,102 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background: black;
+    color: white;
+    padding: 1em 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2em;
+}
+
+#logo img {
+    height: 120px;
+    width: auto;
+}
+
+#main-title {
+    font-size: 2em;
+    color: white;
+    margin-left: 1em;
+}
+
+#login {
+    background-color: yellow;
+    border: none;
+    padding: 0.5em 1em;
+    cursor: pointer;
+}
+
+/* Styles pour l'utilisateur connecté */
+#user-profile {
+    display: flex;
+    align-items: center;
+}
+
+#user-profile img {
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+#user-points {
+    color: yellow;
+    font-weight: bold;
+}
+
+main {
+    background-color: #f7f7f7;
+    padding: 2em;
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1em;
+}
+
+.game {
+    background-color: #333;
+    color: #fff;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.game img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.price {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    color: yellow;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px 0;
+}
+
+h2 {
+    margin: 1em 0;
+}
