@@ -77,7 +77,7 @@ class Pacman {
     }
 
     checkGhostCollision () {
-
+        // fonction qui vérifie si pacman est en collision avec un fantome
     }
 
     changeDirectionIfPossible() {

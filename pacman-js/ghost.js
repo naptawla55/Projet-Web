@@ -198,6 +198,7 @@ class Ghost {
             tempMoves.push(DIRECTION_UP);
             queue.push({ x: poped.x, y: poped.y - 1, moves: tempMoves });
         }
+        // si on peut aller en bas et que la case en bas n'est pas un mur
         if (
             poped.y + 1 >= 0 &&
             poped.y + 1 < numOfColumns &&

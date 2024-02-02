@@ -128,7 +128,7 @@ let eatfood = () => {
 }
 
 let createScore = () => {
-    let score = 220;  // to improve
+    let score = 236;  // to improve
     for( let i = 0 ; i < map.length ; i++) {
         for( let j = 0 ; j < map[0].length; j++) {
             // reguler food is worth 1 point and biggest food is worth 5 points
