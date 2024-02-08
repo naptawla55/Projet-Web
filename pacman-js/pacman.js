@@ -1,6 +1,6 @@
 
 class Pacman {
-    constructor(x ,y ,width ,height, speed) {
+    constructor(x ,y ,width ,height, speed, lives) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -10,6 +10,7 @@ class Pacman {
         this.nextDirection = this.direction;
         this.currentFrame = 1;
         this.frameCount = 7;
+        this.lives = 3;
         
         setInterval(() => {
             this.changeAnimation();

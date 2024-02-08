@@ -40,9 +40,26 @@ class Ghost {
         }
     }
 
-    eat() {
-        // fonction qui gère la collision avec pacman
-        
+    eat(pacman) {
+        // Check collision between pacman and ghost
+        if (
+            pacman.x < this.x + this.width &&
+            pacman.x + pacman.width > this.x &&
+            pacman.y < this.y + this.height &&
+            pacman.y + pacman.height > this.y
+        ) {
+            // Pacman is touched by the ghost, so handle the game over logic here
+            console.log("Pacman is eaten by the ghost!");
+            pacman.lives -= 1;
+            
+            if (pacman.lives <= 0) {
+                console.log("Game Over!");
+                clearInterval(gameInterval); // Stop the game loop
+            } else {
+                console.log("Pacman is still alive!");
+                createNewpacman();
+            }
+        }
     }
 
     moveForwards() {

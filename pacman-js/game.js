@@ -75,6 +75,7 @@ let update = () => {
     pacman.moveProcess();
     for(let i = 0 ; i < ghosts.length ; i++) {
         ghosts[i].moveProcess();
+        ghosts[i].eat(pacman);
     }
 };
 
@@ -150,7 +151,12 @@ let drawGhosts = () => {
     }
 }
 
+let startgame = () => {
+    // i can only start the game is i click on a "start" button
+}
+
 let draw = () => {
+    startgame();
     createRect(0,0, canvas.width, canvas.height, "black");
     //todo
     drawWalls();
@@ -220,7 +226,7 @@ let drawWalls = () => {
 };
 
 let createNewpacman = () => {
-    pacman = new Pacman(oneBlockSize, oneBlockSize, oneBlockSize, oneBlockSize, oneBlockSize / 5);
+    pacman = new Pacman(oneBlockSize, oneBlockSize, oneBlockSize, oneBlockSize, oneBlockSize / 5, 3);
     // this sunction will be called when the game starts and when pacman dies
 };
 
