@@ -231,6 +231,13 @@ let createNewpacman = () => {
     // this sunction will be called when the game starts and when pacman dies
 };
 
+let teleportPacman = () => {
+    // this function will teleport batman to the beginning of the map
+    pacman.x = oneBlockSize;
+    pacman.y = oneBlockSize;
+};
+
+
 
 let createGhosts = () => {
     ghosts = [];

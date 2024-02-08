@@ -53,14 +53,14 @@ class Ghost {
             console.log("Pacman is eaten by the ghost!");
             pacman.lives--; // Decrement Pacman's lives
     
-            if (pacman.lives = 0) {
+            if (pacman.lives == 0) {
                 // No more lives left, game over
                 console.log("Game Over!");
                 clearInterval(gameInterval); // Stop the game loop or perform other game over actions
             } else {
                 // Pacman still has lives left, respawn him
                 console.log("Pacman is still alive!");
-                createNewpacman(); // Respawn Pacman
+                teleportPacman(); // Respawn Pacman
                 
             }
         }
