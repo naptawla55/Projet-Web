@@ -1,0 +1,33 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+body {
+    background-color: #5372ef;
+}
+.container {
+    width: 90%;
+    max-width: 37.5em;
+    background-color: #ffffff;
+    padding: 3em 0.5em;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 0.8em;
+}
+h3 {
+    text-align: center;
+    width: 60%;
+    margin: 0 auto 2em auto;
+    font-size: 1.2em;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    line-height: 1.8em;
+    color: #010c39;
+}
+.draggable-objects,.drop-points{
+    display: flex;
+}
