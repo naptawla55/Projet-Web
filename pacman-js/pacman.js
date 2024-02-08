@@ -10,7 +10,7 @@ class Pacman {
         this.nextDirection = this.direction;
         this.currentFrame = 1;
         this.frameCount = 7;
-        this.lives = 3;
+        this.lives = 5;
         
         setInterval(() => {
             this.changeAnimation();
@@ -26,9 +26,7 @@ class Pacman {
         }
     }
 
-    eat() {
-
-    }
+    
 
     moveForwards() {
         switch(this.direction) {

@@ -166,6 +166,7 @@ let draw = () => {
     createScore();
     pacman.draw();
     drawGhosts();
+    canvasContext.fillText("Lives: " + pacman.lives, 0, oneBlockSize * map.length + 40);
 };
 
 let gameInterval = setInterval(gameLoop, 1000 / fps);

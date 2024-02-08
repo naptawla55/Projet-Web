@@ -48,19 +48,24 @@ class Ghost {
             pacman.y < this.y + this.height &&
             pacman.y + pacman.height > this.y
         ) {
-            // Pacman is touched by the ghost, so handle the game over logic here
+            // Pacman is touched by the ghost
+            console.log(pacman.lives);
             console.log("Pacman is eaten by the ghost!");
-            pacman.lives -= 1;
-            
-            if (pacman.lives <= 0) {
+            pacman.lives--; // Decrement Pacman's lives
+    
+            if (pacman.lives = 0) {
+                // No more lives left, game over
                 console.log("Game Over!");
-                clearInterval(gameInterval); // Stop the game loop
+                clearInterval(gameInterval); // Stop the game loop or perform other game over actions
             } else {
+                // Pacman still has lives left, respawn him
                 console.log("Pacman is still alive!");
-                createNewpacman();
+                createNewpacman(); // Respawn Pacman
+                
             }
         }
     }
+    
 
     moveForwards() {
         switch(this.direction) {
