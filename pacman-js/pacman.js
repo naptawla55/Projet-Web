@@ -1,6 +1,6 @@
 
 class Pacman {
-    constructor(x ,y ,width ,height, speed) {
+    constructor(x ,y ,width ,height, speed, lives) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -10,6 +10,7 @@ class Pacman {
         this.nextDirection = this.direction;
         this.currentFrame = 1;
         this.frameCount = 7;
+        this.lives = 5;
         
         setInterval(() => {
             this.changeAnimation();
@@ -25,9 +26,7 @@ class Pacman {
         }
     }
 
-    eat() {
-
-    }
+    
 
     moveForwards() {
         switch(this.direction) {
@@ -77,17 +76,22 @@ class Pacman {
     }
 
     checkGhostCollision () {
-
+        // fonction qui vérifie si pacman est en collision avec un fantome
     }
 
     changeDirectionIfPossible() {
         // fontion qui change la direction si il n'y a pas de collision
-        if(this.direction == DIRECTION_RIGHT || this.direction == DIRECTION_LEFT) {
-            if(this.nextDirection == DIRECTION_UP || this.nextDirection == DIRECTION_BOTTOM) {
-                if(this.checkCollision()) {
-                    this.direction = this.nextDirection;
-                }
-            }
+        if (this.direction == this.nextDirection) {
+            return;
+        }
+        let tempDirection = this.direction;
+        this.direction = this.nextDirection;
+        this.moveForwards();
+        if(this.checkCollision()) {
+            this.moveBackwards();
+            this.direction = tempDirection;
+        } else {
+            this.moveBackwards();
         }
     }
     
