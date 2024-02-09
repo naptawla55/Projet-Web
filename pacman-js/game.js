@@ -79,6 +79,8 @@ let update = () => {
     }
 };
 
+
+
 let drawFood = () => {
     for( let i = 0 ; i < map.length ; i++) {
         for( let j = 0 ; j < map[0].length; j++) {
@@ -129,7 +131,7 @@ let eatfood = () => {
 }
 
 let createScore = () => {
-    let score = 236;  // to improve
+    let score = 238;  // to improve
     for( let i = 0 ; i < map.length ; i++) {
         for( let j = 0 ; j < map[0].length; j++) {
             // reguler food is worth 1 point and biggest food is worth 5 points
@@ -167,6 +169,12 @@ let draw = () => {
     pacman.draw();
     drawGhosts();
     canvasContext.fillText("Lives: " + pacman.lives, 0, oneBlockSize * map.length + 40);
+    if (pacman.lives === 0) {
+        canvasContext.fillStyle = "red";
+        canvasContext.font = "50px verdana";
+        canvasContext.textAlign = "center";
+        canvasContext.fillText("Game Over", canvas.width / 2, canvas.height / 2);
+    }
 };
 
 let gameInterval = setInterval(gameLoop, 1000 / fps);
@@ -231,12 +239,25 @@ let createNewpacman = () => {
     // this sunction will be called when the game starts and when pacman dies
 };
 
+// Function to restart the game
+let restartGame = () => {
+    clearInterval(gameInterval); // Stop the game loop
+    createNewpacman(); // Reset pacman
+    createGhosts(); // Reset ghosts
+    createScore(); // Reset the score
+    gameInterval = setInterval(gameLoop, 1000 / fps); // Start the game loop again
+};
+
 let teleportPacman = () => {
     // this function will teleport batman to the beginning of the map
     pacman.x = oneBlockSize;
     pacman.y = oneBlockSize;
 };
 
+
+document.getElementById("restartButton").addEventListener("click", () => {
+    restartGame(); // Call restartGame function when the button is clicked
+});
 
 
 let createGhosts = () => {
