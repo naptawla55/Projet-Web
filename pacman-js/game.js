@@ -244,8 +244,17 @@ let restartGame = () => {
     clearInterval(gameInterval); // Stop the game loop
     createNewpacman(); // Reset pacman
     createGhosts(); // Reset ghosts
-    createScore(); // Reset the score
     gameInterval = setInterval(gameLoop, 1000 / fps); // Start the game loop again
+};
+
+let respawnPallets = () => {
+    for(let i = 0 ; i < map.length ; i++) {
+        for(let j = 0 ; j < map[0].length ; j++) {
+            if(map[i][j] == 2 || map[i][j] == 3) {
+                map[i][j] = 2;
+            }
+        }
+    }
 };
 
 let teleportPacman = () => {
