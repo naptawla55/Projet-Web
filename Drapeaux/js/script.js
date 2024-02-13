@@ -166,7 +166,7 @@ const creator = () => {
     if (isTouchDevice()) {
       flagDiv.style.position = "absolute";
     }
-    flagDiv.innerHTML = `<img src="${i}.png" id="${i}">`;
+    flagDiv.innerHTML = `<img src="DRAPEAUX/${i}.png" id="${i}">`;
     dragContainer.appendChild(flagDiv);
   }
   //Sort the array randomly before creating country divs
