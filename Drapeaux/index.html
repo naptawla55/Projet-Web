@@ -1,24 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>jeu de drapeaux</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/css/drapeaux.css" />
-  </head>
-  <body>
-    <div class="container">
-      <h3>Mettez le drapeaux sur le nom du pays</h3>
-      <div class="draggable-objects"></div>
-      <div class="drop-points"></div>
-    </div>
-    <div class="controls-container">
-      <p id="result"></p>
-      <button id="start">Debuter</button>
-    </div>
-    <script src="/js/script.js"></script>
-  </body>
+<html>
+    <head>
+        <title>Jeu de Drapeaux</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+
+      <div class="quizz-container">
+        <div id="container-question">
+            <img id="quizz-img">
+            <p id="quiz-question">Je suis une question</p>
+        </div>     
+        <div id="container-content">
+            <input type="text" id="resultat">
+            <button id="next">Suivant</button>
+        </div>
+        <p id="resultatFinal"></p>
+       </div>
+
+
+
+     <script src="app.js"></script>   
+    </body>
 </html>
