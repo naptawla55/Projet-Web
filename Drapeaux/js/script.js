@@ -24,7 +24,7 @@ const data = [
   "Sri-lanka",
   "Suéde",
   "Suisse",
-  "Etast-Unis",
+  "Etats-Unis",
   "Uruguay",
   "Pays De Galles",
 ];
