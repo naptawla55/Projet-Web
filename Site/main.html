@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
+  <title>My Games Carousel</title>
   <link href="css/main.css" rel="stylesheet">
 </head>
 <body>
@@ -47,5 +47,20 @@
       <a href="#" class="privacy-policy">Privacy Policy</a>
     </div>
   </footer>
+
+  <script>
+    // Wait for the DOM to be loaded
+    document.addEventListener('DOMContentLoaded', (event) => {
+      // Get all the indicators
+      const indicators = document.querySelectorAll('.carousel-indicators .indicator');
+      
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', function() {
+          // Simulate a click on the associated radio input
+          document.getElementById(`slide${index+1}`).checked = true;
+        });
+      });
+    });
+  </script>
 </body>
 </html>
