@@ -68,9 +68,20 @@ const ships = [destroyer, submarine, cruiser, battleship, carrier]
     optionContainer.appendChild(optionShip)
 }  */
 
-function addShipPiece () {
+function addShipPiece (ship) {
     const allBoardBlocks = document.querySelectorAll('#computer div')
-    console.log(allBoardBlocks)
+    let randomBoolean = Math.random() < 0.5
+    let isHorizontal = true
+    let randomStart = Math.floor(Math.random() * width * width)
+    console.log(randomStart)
+
+    let shipBlocks = []
+
+    for(let i =0; i < ship.length; i++) {
+        if (isHorizontal) {
+            console.log(allBoardBlocks[Number(randomStart) + i]) 
+        }
+    }
 }
 
-addShipPiece()
+addShipPiece (destroyer)
