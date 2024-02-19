@@ -63,8 +63,8 @@ body, html {
 }
 
 .banner-image {
-  flex: 0 0 100%; /* Ensure each image takes full width */
-  width: 100%;
+  flex: 50 50 50%; /* Ensure each image takes full width */
+  width: 10%;
   height: auto;
   max-width: none; 
   opacity: 0;
@@ -74,12 +74,16 @@ body, html {
 input[type="radio"] {
   display: none;
 }
-
+/* Show only the selected image */
+/* Show only the selected image */
 #slide1:checked ~ .banner-images .banner-image:nth-of-type(1),
 #slide2:checked ~ .banner-images .banner-image:nth-of-type(2),
 #slide3:checked ~ .banner-images .banner-image:nth-of-type(3) {
-  opacity: 1; /* Show only the selected image */
+  opacity: 1;
 }
+
+
+
 
 .indicator {
   width: 10px;
@@ -90,6 +94,7 @@ input[type="radio"] {
   margin: 0 0.25rem;
   cursor: pointer;
 }
+/* Carousel Indicators */
 
 #slide1:checked ~ .carousel-indicators label:nth-child(1),
 #slide2:checked ~ .carousel-indicators label:nth-child(2),
