@@ -2,18 +2,22 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     position: relative;
     min-height: 100vh;
-    background: linear-gradient(to top ,rgb(2, 51, 58), rgb(151, 252, 227))
+    /* Modification de l'arrière-plan pour adopter un dégradé noir et jaune */
+    background: linear-gradient(to top, #000000, #FFD700);
 }
 
 .quizz-container {
     width: 100%;
     max-width: 500px;
     position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    background: #f1f1f1;
-    box-shadow: 0 5px 5px 0 rgba(255,255,255,.2);
+    top: 50%;
+    left: 50%;
+    /* Centrage du conteneur */
+    transform: translate(-50%, -50%);
+    /* Couleur de fond du conteneur ajustée pour plus de contraste */
+    background: #333333;
+    /* Ombre et bordure adaptées pour un look plus moderne et cohérent */
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.2);
     border-radius: 15px;
     overflow: hidden;
 }
@@ -28,11 +32,12 @@ body {
 
 #quizz-question {
     margin: 3rem auto;
-    text-align:center;
+    text-align: center;
     font-size: 30px;
     font-weight: bold;
     text-transform: uppercase;
-    color:rgb(7, 56, 56);
+    /* Ajustement de la couleur du texte pour améliorer la visibilité */
+    color: #FFD700;
 }
 
 #container-content label {
@@ -40,6 +45,8 @@ body {
     margin-left: 2rem;
     font-weight: bold;
     font-size: 18px;
+    /* Couleur du texte des labels */
+    color: #FFFFFF;
 }
 
 #container-content input {
@@ -49,9 +56,12 @@ body {
     border: none;
     outline: none;
     background: none;
-    border-bottom: 1px solid gray;
+    /* Bordure inférieure pour les champs de saisie, adaptée au nouveau thème */
+    border-bottom: 2px solid #FFD700;
     font-size: 20px;
     font-weight: 500;
+    /* Couleur du texte saisi ajustée pour contraster avec le fond */
+    color: #FFFFFF;
 }
 
 button {
@@ -59,10 +69,12 @@ button {
     margin: 0 auto;
     width: 90%;
     height: 40px;
-    color: #f1f1f1;
+    /* Adaptation des couleurs pour le bouton */
+    color: #000;
     font-weight: bold;
     font-size: 18px;
-    background: rgb(4, 49, 45);
+    /* Couleur de fond du bouton ajustée pour correspondre au thème */
+    background: #FFD700;
     border: none;
     outline: none;
     cursor: pointer;
@@ -70,15 +82,17 @@ button {
     border-radius: 10px;
 }
 
-
 button:hover {
-    background: #000;
+    /* Couleur au survol du bouton pour un effet visuel */
+    background: #FFA500;
 }
 
 #resultatFinal {
-    text-align:center;
+    text-align: center;
     margin: 2rem 0;
     font-weight: bold;
     font-size: 30px;
     text-transform: uppercase;
+    /* Couleur du texte ajustée pour correspondre au nouveau thème */
+    color: #FFD700;
 }
