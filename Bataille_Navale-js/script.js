@@ -69,19 +69,45 @@ const ships = [destroyer, submarine, cruiser, battleship, carrier]
 }  */
 
 function addShipPiece (ship) {
-    const allBoardBlocks = document.querySelectorAll('#computer div')
-    let randomBoolean = Math.random() < 0.5
-    let isHorizontal = true
-    let randomStart = Math.floor(Math.random() * width * width)
-    console.log(randomStart)
+    const allBoardBlocks = Array.from(document.querySelectorAll('#computer div'));
+    let isHorizontal = Math.random() < 0.5;
+    let randomStart = Math.floor(Math.random() * width * width);
 
-    let shipBlocks = []
+    const ValidStart = (start, isHorizontal, length) => {
+        let shipBlocks = [];
+        for (let i = 0; i < length; i++) {
+            let block;
+            if (isHorizontal) {
+                if (start + i >= width) return false; // Check if ship goes outside the board horizontally
+                block = allBoardBlocks[start + i];
+            } else {
+                if (start + i * width >= width * width) return false; // Check if ship goes outside the board vertically
+                block = allBoardBlocks[start + i * width];
+            }
+            shipBlocks.push(block);
+        }
+        // Check if any of the blocks are already taken
+        return shipBlocks.every(block => !block.classList.contains('taken'));
+    };
 
-    for(let i =0; i < ship.length; i++) {
+    while (!ValidStart(randomStart, isHorizontal, ship.length)) {
+        randomStart = Math.floor(Math.random() * width * width);
+        isHorizontal = Math.random() < 0.5;
+    }
+
+    let shipBlocks = [];
+
+    for(let i = 0; i < ship.length; i++) {
         if (isHorizontal) {
-            console.log(allBoardBlocks[Number(randomStart) + i]) 
+            shipBlocks.push(allBoardBlocks[randomStart + i]);
+        } else {
+            shipBlocks.push(allBoardBlocks[randomStart + i * width]);
         }
     }
+
+    shipBlocks.forEach(shipBlock => {
+        shipBlock.classList.add(ship.name, 'taken');
+    });
 }
 
-addShipPiece (destroyer)
+ships.forEach(ship => addShipPiece(ship))
