@@ -96,3 +96,60 @@ button:hover {
     /* Couleur du texte ajustée pour correspondre au nouveau thème */
     color: #FFD700;
 }
+/* Online friends sidebar styles */
+#friends-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 1000; /* Ensure the sidebar is above other content */
+  }
+  
+  #friends-sidebar h2 {
+    margin-top: 0;
+  }
+  
+  #online-friends {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #online-friends li {
+    padding: 8px;
+    border-bottom: 1px solid #444;
+  }
+  
+  .online-dot {
+    height: 10px;
+    width: 10px;
+    background-color: #00C853;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 10px;
+  }
+  
+  /* Home button styles */
+  #home-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background-color: #FFC107;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: black;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000; /* Ensure the button is above other content */
+  }
+  
+  #home-button:hover {
+    background-color: #FFD54F;
+  }
+  
