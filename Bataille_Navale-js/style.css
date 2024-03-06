@@ -97,3 +97,7 @@
 .carrier-preview {
     background-color: blue;
 }
+
+.highlight {
+    background-color: rgba(0, 0, 0, 0.3); /* Change this to the color you want for the highlight */
+}

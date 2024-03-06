@@ -56,32 +56,20 @@ const carrier = new Ship('carrier', 5)
 const ships = [destroyer, submarine, cruiser, battleship, carrier]
 let notDropped
 
-// display ships
-/*function displayShip (ship, user) {
-    const optionShip = document.createElement('div')
-    optionShip.classList.add('option-ship')
-    optionShip.id = ship.name
-    optionShip.textContent = ship.name
-    optionShip.draggable = true
-    optionShip.style.width = ship.length * 30 + 'px'
-    optionShip.style.backgroundColor = 'lightgrey'
-    optionShip.style.transform = 'rotate(' + ship.direction + 'deg)'
-    optionContainer.appendChild(optionShip)
-}  */
 
-function addShipPiece (user, ship, startId) {
-    const allBoardBlocks = Array.from(document.querySelectorAll(`#${user} div`)); // Corrected here
+function addShipPiece (user, ship, startId, randomPlacement = false) {
+    const allBoardBlocks = Array.from(document.querySelectorAll(`#${user} div`));
     let isHorizontal = user === 'player' ? angle === 0 : Math.random() < 0.5;
     let randomStart = Math.floor(Math.random() * width * width);
 
-    let startIndex = startId ? startId : randomStart;
+    let startIndex = randomPlacement ? randomStart : startId;
 
     const ValidStart = (start, isHorizontal, length) => {
         let shipBlocks = [];
         for (let i = 0; i < length; i++) {
             let block;
             if (isHorizontal) {
-                if (start + i >= width) return false; // Check if ship goes outside the board horizontally
+                if (start % width + i >= width) return false; // Check if ship goes outside the board horizontally
                 block = allBoardBlocks[start + i];
             } else {
                 if (start + i * width >= width * width) return false; // Check if ship goes outside the board vertically
@@ -113,7 +101,7 @@ function addShipPiece (user, ship, startId) {
     });
 }
 
-ships.forEach(ship => addShipPiece('computer', ship))
+ships.forEach(ship => addShipPiece('computer', ship, null, true)); // Place the computer's ships randomly
 
 // drag and drop
 let draggedShip
@@ -180,7 +168,7 @@ function dropShip (e) {
     const shipName = e.dataTransfer.getData('text/plain'); // Get the dataTransfer data
     const ship = ships.find(ship => ship.name === shipName); // Find the ship based on the dataTransfer data
     if (ship) {
-        addShipPiece('player', ship, startId);
+        addShipPiece('player', ship, startId); // Place the player's ship where it is dropped
         if (!notDropped) {
             draggedShip.remove();
         }
