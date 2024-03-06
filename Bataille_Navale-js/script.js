@@ -70,7 +70,7 @@ let notDropped
 }  */
 
 function addShipPiece (user, ship, startId) {
-    const allBoardBlocks = Array.from(document.querySelectorAll(`#${user} div`));
+    const allBoardBlocks = Array.from(document.querySelectorAll(`#${user} div`)); // Corrected here
     let isHorizontal = user === 'player' ? angle === 0 : Math.random() < 0.5;
     let randomStart = Math.floor(Math.random() * width * width);
 
@@ -135,13 +135,35 @@ playerBlocks.forEach(block => {
 function dragStart (e) {
     notDropped = false;
     draggedShip = e.target; // Set draggedShip to the ship element that is being dragged
-    e.dataTransfer.setData('text/plain', draggedShip.id); // Set the dataTransfer data to the id of the dragged element
+    const shipName = draggedShip.className.split(' ')[1]; // Get the ship's name from the class name
+    e.dataTransfer.setData('text/plain', shipName); // Set the dataTransfer data to the ship's name
     console.log(e.target);
 }
 
 function dragEnter (e) {
     e.preventDefault();
-    e.target.style.backgroundColor = 'rgba(0, 0, 0, 0.3)'; // Change the background color of the block when a ship is over it
+    const shipName = e.dataTransfer.getData('text/plain'); // Get the dataTransfer data
+    // Change the background color of the block based on the ship that is being dragged over it
+    switch (shipName) {
+        case 'destroyer':
+            e.target.style.backgroundColor = 'rgba(255, 0, 0, 0.3)'; // Red
+            break;
+        case 'submarine':
+            e.target.style.backgroundColor = 'rgba(0, 255, 0, 0.3)'; // Green
+            break;
+        case 'cruiser':
+            e.target.style.backgroundColor = 'rgba(128, 0, 128, 0.3)'; // Violet
+            break;
+        case 'battleship':
+            e.target.style.backgroundColor = 'rgba(255, 165, 0, 0.3)'; // Orange
+            break;
+        case 'carrier':
+            e.target.style.backgroundColor = 'rgba(0, 0, 255, 0.3)'; // Blue
+            break;
+        default:
+            e.target.style.backgroundColor = '';
+            break;
+    }
 }
 
 function dragLeave (e) {
