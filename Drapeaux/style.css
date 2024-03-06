@@ -1,155 +1,207 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    position: relative;
-    min-height: 100vh;
-    /* Modification de l'arrière-plan pour adopter un dégradé noir et jaune */
-    background: linear-gradient(to top, #000000, #FFD700);
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(to top, #000000, #FFD700);
+  margin: 0; /* Resets default body margin */
+  overflow-x: hidden; /* Prevents horizontal scroll */
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10px; /* Increased padding */
+  background-color: #333;
+  color: #FFF;
+  height: 100px; /* Increased height */
+}
+.site-logo {
+  width: auto; /* Adjust as necessary */
+  height: 80px; /* Adjust as necessary */
+  margin-right: 10px;
+}
+
+.header-left h1 {
+  margin: 0;
+  font-size: 1.5em; /* Adjusted for a proper header size */
+}
+
+.header-nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.header-nav li {
+  padding: 0 15px;
+}
+
+.header-nav li a {
+  color: #FFF;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.header-right .user-profile {
+  display: flex;
+  align-items: center;
+}
+
+.user-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user-profile span {
+  font-weight: bold;
 }
 
 .quizz-container {
-    width: 100%;
-    max-width: 500px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    /* Centrage du conteneur */
-    transform: translate(-50%, -50%);
-    /* Couleur de fond du conteneur ajustée pour plus de contraste */
-    background: #333333;
-    /* Ombre et bordure adaptées pour un look plus moderne et cohérent */
-    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
-    overflow: hidden;
+  width: 100%;
+  max-width: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* Centrage du conteneur */
+  transform: translate(-50%, -50%);
+  /* Couleur de fond du conteneur ajustée pour plus de contraste */
+  background: #333333;
+  /* Ombre et bordure adaptées pour un look plus moderne et cohérent */
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  overflow: hidden;
 }
 
 #container-questions, #container-content {
-    margin: 0 0 1rem 0;
+  margin: 0 0 1rem 0;
 }
 
 #quizz-img {
-    width: 100%;
+  width: 100%;
 }
 
 #quizz-question {
-    margin: 3rem auto;
-    text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-    text-transform: uppercase;
-    /* Ajustement de la couleur du texte pour améliorer la visibilité */
-    color: #FFD700;
+  margin: 3rem auto;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  /* Ajustement de la couleur du texte pour améliorer la visibilité */
+  color: #FFD700;
 }
 
 #container-content label {
-    display: block;
-    margin-left: 2rem;
-    font-weight: bold;
-    font-size: 18px;
-    /* Couleur du texte des labels */
-    color: #FFFFFF;
+  display: block;
+  margin-left: 2rem;
+  font-weight: bold;
+  font-size: 18px;
+  /* Couleur du texte des labels */
+  color: #FFFFFF;
 }
 
 #container-content input {
-    margin: 1rem 1rem;
-    width: 90%;
-    height: 50px;
-    border: none;
-    outline: none;
-    background: none;
-    /* Bordure inférieure pour les champs de saisie, adaptée au nouveau thème */
-    border-bottom: 2px solid #FFD700;
-    font-size: 20px;
-    font-weight: 500;
-    /* Couleur du texte saisi ajustée pour contraster avec le fond */
-    color: #FFFFFF;
+  margin: 1rem 1rem;
+  width: 90%;
+  height: 50px;
+  border: none;
+  outline: none;
+  background: none;
+  /* Bordure inférieure pour les champs de saisie, adaptée au nouveau thème */
+  border-bottom: 2px solid #FFD700;
+  font-size: 20px;
+  font-weight: 500;
+  /* Couleur du texte saisi ajustée pour contraster avec le fond */
+  color: #FFFFFF;
 }
 
 button {
-    display: block;
-    margin: 0 auto;
-    width: 90%;
-    height: 40px;
-    /* Adaptation des couleurs pour le bouton */
-    color: #000;
-    font-weight: bold;
-    font-size: 18px;
-    /* Couleur de fond du bouton ajustée pour correspondre au thème */
-    background: #FFD700;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    transition: background .2s ease-in-out;
-    border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+  width: 90%;
+  height: 40px;
+  /* Adaptation des couleurs pour le bouton */
+  color: #000;
+  font-weight: bold;
+  font-size: 18px;
+  /* Couleur de fond du bouton ajustée pour correspondre au thème */
+  background: #FFD700;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+  border-radius: 10px;
 }
 
 button:hover {
-    /* Couleur au survol du bouton pour un effet visuel */
-    background: #FFA500;
+  /* Couleur au survol du bouton pour un effet visuel */
+  background: #FFA500;
 }
 
 #resultatFinal {
-    text-align: center;
-    margin: 2rem 0;
-    font-weight: bold;
-    font-size: 30px;
-    text-transform: uppercase;
-    /* Couleur du texte ajustée pour correspondre au nouveau thème */
-    color: #FFD700;
+  text-align: center;
+  margin: 2rem 0;
+  font-weight: bold;
+  font-size: 30px;
+  text-transform: uppercase;
+  /* Couleur du texte ajustée pour correspondre au nouveau thème */
+  color: #FFD700;
 }
 /* Online friends sidebar styles */
 #friends-sidebar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 250px;
-    height: 100%;
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-    z-index: 1000; /* Ensure the sidebar is above other content */
-  }
-  
-  #friends-sidebar h2 {
-    margin-top: 0;
-  }
-  
-  #online-friends {
-    list-style: none;
-    padding: 0;
-  }
-  
-  #online-friends li {
-    padding: 8px;
-    border-bottom: 1px solid #444;
-  }
-  
-  .online-dot {
-    height: 10px;
-    width: 10px;
-    background-color: #00C853;
-    border-radius: 50%;
-    display: inline-block;
-    margin-left: 10px;
-  }
-  
-  /* Home button styles */
-  #home-button {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    background-color: #FFC107;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    color: black;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    z-index: 1000; /* Ensure the button is above other content */
-  }
-  
-  #home-button:hover {
-    background-color: #FFD54F;
-  }
-  
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  z-index: 1000; /* Ensure the sidebar is above other content */
+}
+
+#friends-sidebar h2 {
+  margin-top: 0;
+}
+
+#online-friends {
+  list-style: none;
+  padding: 0;
+}
+
+#online-friends li {
+  padding: 8px;
+  border-bottom: 1px solid #444;
+}
+
+.online-dot {
+  height: 10px;
+  width: 10px;
+  background-color: #00C853;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+/* Home button styles */
+#home-button {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background-color: #FFC107;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  color: black;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 1000; /* Ensure the button is above other content */
+}
+
+#home-button:hover {
+  background-color: #FFD54F;
+}
