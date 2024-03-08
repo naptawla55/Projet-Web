@@ -122,9 +122,7 @@ function switchTurn() {
     if (currentPlayer === 'computer') {
         // If it's the computer's turn, place a ship for the computer
         const ship = ships.find(ship => !computerPlacedShips.includes(ship)); // Find a ship that hasn't been placed yet
-        if (ship) {
-            addShipPiece('computer', ship, null, true); // Place the ship randomly on the computer's board
-        }
+       
     }
 }
 
