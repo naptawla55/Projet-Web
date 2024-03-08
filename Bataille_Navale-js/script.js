@@ -130,32 +130,35 @@ function dragStart (e) {
 
 function dragEnter (e) {
     e.preventDefault();
-    const shipName = e.dataTransfer.getData('text/plain'); // Get the dataTransfer data
-    // Change the background color of the block based on the ship that is being dragged over it
-    switch (shipName) {
-        case 'destroyer':
-            e.target.style.backgroundColor = 'rgba(255, 0, 0, 0.3)'; // Red
-            break;
-        case 'submarine':
-            e.target.style.backgroundColor = 'rgba(0, 255, 0, 0.3)'; // Green
-            break;
-        case 'cruiser':
-            e.target.style.backgroundColor = 'rgba(128, 0, 128, 0.3)'; // Violet
-            break;
-        case 'battleship':
-            e.target.style.backgroundColor = 'rgba(255, 165, 0, 0.3)'; // Orange
-            break;
-        case 'carrier':
-            e.target.style.backgroundColor = 'rgba(0, 0, 255, 0.3)'; // Blue
-            break;
-        default:
-            e.target.style.backgroundColor = '';
-            break;
+    const data = e.dataTransfer.getData('text/plain');
+    if (!data) return; // If the dataTransfer data is empty, return
+    const { shipName, shipLength, isHorizontal } = JSON.parse(data); // Get the dataTransfer data
+    const startId = parseInt(e.target.id); // Convert the id to a number
+    const playerBlocks = Array.from(document.querySelectorAll('#player .block')); // Get all blocks on the player's board
+
+    // Add a highlight to the blocks where the ship will be placed
+    for (let i = 0; i < shipLength; i++) {
+        const blockId = isHorizontal ? startId + i : startId + i * width;
+        if (blockId < playerBlocks.length) {
+            playerBlocks[blockId].classList.add('highlight');
+        }
     }
 }
 
 function dragLeave (e) {
-    e.target.style.backgroundColor = ''; // Reset the background color of the block when a ship leaves it
+    const data = e.dataTransfer.getData('text/plain');
+    if (!data) return; // If the dataTransfer data is empty, return
+    const { shipName, shipLength, isHorizontal } = JSON.parse(data); // Get the dataTransfer data
+    const startId = parseInt(e.target.id); // Convert the id to a number
+    const playerBlocks = Array.from(document.querySelectorAll('#player .block')); // Get all blocks on the player's board
+
+    // Remove the highlight from the blocks where the ship will be placed
+    for (let i = 0; i < shipLength; i++) {
+        const blockId = isHorizontal ? startId + i : startId + i * width;
+        if (blockId < playerBlocks.length) {
+            playerBlocks[blockId].classList.remove('highlight');
+        }
+    }
 }
 
 function dragOver (e) {
@@ -173,4 +176,10 @@ function dropShip (e) {
             draggedShip.remove();
         }
     }
+}
+
+function highlightArea( startIndex, ship) {
+    const playerBlocks = Array.from(document.querySelectorAll('#player .block'));
+    const isHorizontal = angle === 0;
+    const { shipBlocks, ValidStart, notTaken } = checkValidStart(startIndex, isHorizontal, ship.length, playerBlocks);
 }
