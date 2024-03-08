@@ -56,6 +56,7 @@ const carrier = new Ship('carrier', 5)
 const ships = [destroyer, submarine, cruiser, battleship, carrier]
 let notDropped
 
+let computerPlacedShips = [];
 
 function addShipPiece (user, ship, startId, randomPlacement = false) {
     const allBoardBlocks = Array.from(document.querySelectorAll(`#${user} div`));
@@ -99,15 +100,33 @@ function addShipPiece (user, ship, startId, randomPlacement = false) {
     shipBlocks.forEach(shipBlock => {
         shipBlock.classList.add(ship.name, 'taken');
     });
+
+    if (user === 'computer') {
+        computerPlacedShips.push(ship);
+    }
 }
 
-ships.forEach(ship => addShipPiece('computer', ship, null, true)); // Place the computer's ships randomly
 
 // drag and drop
 let draggedShip
 const optionShips = Array.from(optionContainer.children)
 // Setting up Event Listeners
 optionShips.forEach(optionShip => optionShip.addEventListener('dragstart', dragStart));
+// current player turn
+let currentPlayer = 'player'
+
+function switchTurn() {
+    currentPlayer = currentPlayer === 'player' ? 'computer' : 'player'; // Switch the turn to the other player
+    document.getElementById('turn-display').textContent = currentPlayer; // Display whose turn it is
+
+    if (currentPlayer === 'computer') {
+        // If it's the computer's turn, place a ship for the computer
+        const ship = ships.find(ship => !computerPlacedShips.includes(ship)); // Find a ship that hasn't been placed yet
+        if (ship) {
+            addShipPiece('computer', ship, null, true); // Place the ship randomly on the computer's board
+        }
+    }
+}
 
 // Correct target for dragover and drop event listeners
 const playerBlocks = Array.from(document.querySelectorAll('#player .block'));
@@ -135,14 +154,6 @@ function dragEnter (e) {
     const { shipName, shipLength, isHorizontal } = JSON.parse(data); // Get the dataTransfer data
     const startId = parseInt(e.target.id); // Convert the id to a number
     const playerBlocks = Array.from(document.querySelectorAll('#player .block')); // Get all blocks on the player's board
-
-    // Add a highlight to the blocks where the ship will be placed
-    for (let i = 0; i < shipLength; i++) {
-        const blockId = isHorizontal ? startId + i : startId + i * width;
-        if (blockId < playerBlocks.length) {
-            playerBlocks[blockId].classList.add('highlight');
-        }
-    }
 }
 
 function dragLeave (e) {
@@ -151,14 +162,6 @@ function dragLeave (e) {
     const { shipName, shipLength, isHorizontal } = JSON.parse(data); // Get the dataTransfer data
     const startId = parseInt(e.target.id); // Convert the id to a number
     const playerBlocks = Array.from(document.querySelectorAll('#player .block')); // Get all blocks on the player's board
-
-    // Remove the highlight from the blocks where the ship will be placed
-    for (let i = 0; i < shipLength; i++) {
-        const blockId = isHorizontal ? startId + i : startId + i * width;
-        if (blockId < playerBlocks.length) {
-            playerBlocks[blockId].classList.remove('highlight');
-        }
-    }
 }
 
 function dragOver (e) {
@@ -176,10 +179,12 @@ function dropShip (e) {
             draggedShip.remove();
         }
     }
-}
 
-function highlightArea( startIndex, ship) {
-    const playerBlocks = Array.from(document.querySelectorAll('#player .block'));
-    const isHorizontal = angle === 0;
-    const { shipBlocks, ValidStart, notTaken } = checkValidStart(startIndex, isHorizontal, ship.length, playerBlocks);
+    // Place a ship for the computer
+    const computerShip = ships.find(ship => !computerPlacedShips.includes(ship)); // Find a ship that hasn't been placed yet
+    if (computerShip) {
+        addShipPiece('computer', computerShip, null, true); // Place the ship randomly on the computer's board
+    }
+
+    switchTurn(); // Switch the turn to the other player
 }
