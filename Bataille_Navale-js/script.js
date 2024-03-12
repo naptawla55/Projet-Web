@@ -300,6 +300,9 @@ function playerAttack(e) {
     }
 }
 
+let lastHit = null;
+let hitDirection = null;
+
 function computerAttack() {
     const messageDivComputer = document.getElementById('message-computer');
 
@@ -309,9 +312,21 @@ function computerAttack() {
     }
     const playerBlocks = Array.from(document.querySelectorAll('#player .block'));
     let block;
-    do {
-        block = playerBlocks[Math.floor(Math.random() * playerBlocks.length)];
-    } while (block.classList.contains('hit') || block.classList.contains('miss')); // Keep choosing a block until we find one that hasn't been hit or missed
+    if (lastHit !== null) {
+        // If the last hit was successful, try the next block in the same direction
+        block = getNextBlock(playerBlocks, lastHit, hitDirection);
+        if (!block || block.classList.contains('hit') || block.classList.contains('miss')) {
+            // If the next block is out of bounds or has already been hit or missed, switch the direction
+            hitDirection = switchDirection(hitDirection);
+            block = getNextBlock(playerBlocks, lastHit, hitDirection);
+        }
+    }
+
+    if (!block) {
+        do {
+            block = playerBlocks[Math.floor(Math.random() * playerBlocks.length)];
+        } while (block.classList.contains('hit') || block.classList.contains('miss')); // Keep choosing a block until we find one that hasn't been hit or missed
+    }
 
     const shipName = block.className.split(' ')[1]; // Get the ship's name from the class name
 
@@ -321,6 +336,11 @@ function computerAttack() {
         hitPlayerSound.play();
         messageDivComputer.textContent = 'Computer Hit!';
         console.log('Computer hit!');
+
+        lastHit = parseInt(block.id);
+        if (!hitDirection) {
+            hitDirection = 'right'; // Start by trying the block to the right
+        }
 
         // Check if all blocks of the ship have been hit
         const shipBlocks = Array.from(document.querySelectorAll(`#player .${shipName}`));
@@ -345,6 +365,8 @@ function computerAttack() {
         block.classList.add('miss');
         messageDivComputer.textContent = 'Computer miss!';
         console.log('Computer miss!');
+        lastHit = null;
+        hitDirection = null;
     }
 
     // Switch the turn to the player
@@ -355,5 +377,31 @@ function computerAttack() {
         computerBlocks.forEach(block => {
             block.addEventListener('click', playerAttack);
         });
+    }
+}
+
+function getNextBlock(blocks, startId, direction) {
+    switch (direction) {
+        case 'right':
+            return blocks[startId + 1];
+        case 'down':
+            return blocks[startId + width];
+        case 'left':
+            return blocks[startId - 1];
+        case 'up':
+            return blocks[startId - width];
+    }
+}
+
+function switchDirection(direction) {
+    switch (direction) {
+        case 'right':
+            return 'down';
+        case 'down':
+            return 'left';
+        case 'left':
+            return 'up';
+        case 'up':
+            return 'right';
     }
 }
