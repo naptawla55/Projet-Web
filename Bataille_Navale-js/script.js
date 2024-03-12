@@ -283,7 +283,20 @@ function playerAttack(e) {
 
     // If it's the computer's turn, make the computer attack
     if (currentPlayer === 'computer') {
-        setTimeout(computerAttack, 1000); // Add a delay before the computer takes its turn
+        // Disable the click event listener on the computer's blocks
+        const computerBlocks = Array.from(document.querySelectorAll('#computer .block'));
+        computerBlocks.forEach(block => {
+            block.removeEventListener('click', playerAttack);
+        });
+
+        setTimeout(() => {
+            computerAttack();
+
+            // Re-enable the click event listener on the computer's blocks
+            computerBlocks.forEach(block => {
+                block.addEventListener('click', playerAttack);
+            });
+        }, 1000); // Add a delay before the computer takes its turn
     }
 }
 
@@ -336,4 +349,11 @@ function computerAttack() {
 
     // Switch the turn to the player
     switchTurn();
+    // If it's the player's turn, re-enable the click event listener on the computer's blocks
+    if (currentPlayer === 'player') {
+        const computerBlocks = Array.from(document.querySelectorAll('#computer .block'));
+        computerBlocks.forEach(block => {
+            block.addEventListener('click', playerAttack);
+        });
+    }
 }
