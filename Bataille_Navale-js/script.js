@@ -205,6 +205,11 @@ function startGame() {
         computerBlocks.forEach(block => {
             block.addEventListener('click', playerAttack);
         });
+
+        // If it's the computer's turn, make the computer attack
+        if (currentPlayer === 'computer') {
+            computerAttack();
+        }
     } else {
         alert('Please place all the ships')
     }
@@ -255,5 +260,48 @@ function playerAttack(e) {
     }
 
     // Switch the turn to the computer
+    switchTurn();
+
+    // If it's the computer's turn, make the computer attack
+    if (currentPlayer === 'computer') {
+        computerAttack();
+    }
+}
+
+function computerAttack() {
+    const playerBlocks = Array.from(document.querySelectorAll('#player .block'));
+    let block;
+    do {
+        block = playerBlocks[Math.floor(Math.random() * playerBlocks.length)];
+    } while (block.classList.contains('hit') || block.classList.contains('miss')); // Keep choosing a block until we find one that hasn't been hit or missed
+
+    const shipName = block.className.split(' ')[1]; // Get the ship's name from the class name
+
+    if (shipName) {
+        // If the block is part of a ship, mark it as hit
+        block.classList.add('hit');
+        console.log('Computer hit!');
+
+        // Check if all blocks of the ship have been hit
+        const shipBlocks = Array.from(document.querySelectorAll(`#player .${shipName}`));
+        if (shipBlocks.every(block => block.classList.contains('hit'))) {
+            // If all blocks of the ship have been hit, mark the ship as sunk
+            const ship = ships.find(ship => ship.name === shipName);
+            ship.isSunk = true;
+            console.log('Computer sunk ' + shipName + '!');
+
+            // Check if all ships have been sunk
+            if (ships.every(ship => ship.isSunk)) {
+                // If all ships have been sunk, the computer wins
+                console.log('Computer wins!');
+            }
+        }
+    } else {
+        // If the block is not part of a ship, mark it as miss
+        block.classList.add('miss');
+        console.log('Computer miss!');
+    }
+
+    // Switch the turn to the player
     switchTurn();
 }
