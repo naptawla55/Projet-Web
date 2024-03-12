@@ -1,6 +1,8 @@
 const gamesBoardContainer = document.querySelector('#gamesboard-container')
 const optionContainer = document.querySelector('.option-container')
 const flipButton = document.querySelector('#flip-button')
+const startButton = document.querySelector('#start-button')
+const resetButton = document.querySelector('#reset-button')
 
 let angle = 0
 function flip () {
@@ -185,4 +187,73 @@ function dropShip (e) {
     }
 
     switchTurn(); // Switch the turn to the other player
+}
+
+let isGameOver = false;
+
+//start game
+function startGame() {
+    if (computerPlacedShips.length === 5) {
+        isGameOver = false;
+        startButton.style.display = 'none';
+        optionContainer.style.display = 'none';
+        gamesBoardContainer.style.display = 'grid';
+        document.getElementById('turn-display').textContent = currentPlayer;
+
+        // Add event listeners to the blocks on the computer's board
+        const computerBlocks = Array.from(document.querySelectorAll('#computer .block'));
+        computerBlocks.forEach(block => {
+            block.addEventListener('click', playerAttack);
+        });
+    } else {
+        alert('Please place all the ships')
+    }
+}
+
+//reset game
+function resetGame() {
+    location.reload();
+}
+
+startButton.addEventListener('click', startGame)
+resetButton.addEventListener('click', resetGame)
+
+
+function playerAttack(e) {
+    const block = e.target;
+
+    // If the block has already been hit or missed, return immediately
+    if (block.classList.contains('hit') || block.classList.contains('miss')) {
+        return;
+    }
+
+    const shipName = block.className.split(' ')[1]; // Get the ship's name from the class name
+
+    if (shipName) {
+        // If the block is part of a ship, mark it as hit
+        block.classList.add('hit');
+        console.log('Hit!');
+
+        // Check if all blocks of the ship have been hit
+        const shipBlocks = Array.from(document.querySelectorAll(`#computer .${shipName}`));
+        if (shipBlocks.every(block => block.classList.contains('hit'))) {
+            // If all blocks of the ship have been hit, mark the ship as sunk
+            const ship = ships.find(ship => ship.name === shipName);
+            ship.isSunk = true;
+            console.log(shipName + ' sunk!');
+
+            // Check if all ships have been sunk
+            if (ships.every(ship => ship.isSunk)) {
+                // If all ships have been sunk, the player wins
+                console.log('You win!');
+            }
+        }
+    } else {
+        // If the block is not part of a ship, mark it as miss
+        block.classList.add('miss');
+        console.log('Miss!');
+    }
+
+    // Switch the turn to the computer
+    switchTurn();
 }
