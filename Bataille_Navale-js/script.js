@@ -225,6 +225,10 @@ resetButton.addEventListener('click', resetGame)
 
 
 function playerAttack(e) {
+    // If the game is over, return immediately
+    if (isGameOver) {
+        return;
+    }
     const block = e.target;
 
     // If the block has already been hit or missed, return immediately
@@ -251,6 +255,7 @@ function playerAttack(e) {
             if (ships.every(ship => ship.isSunk)) {
                 // If all ships have been sunk, the player wins
                 console.log('You win!');
+                isGameOver = true;
             }
         }
     } else {
@@ -269,6 +274,10 @@ function playerAttack(e) {
 }
 
 function computerAttack() {
+    // If the game is over, return immediately
+    if (isGameOver) {
+        return;
+    }
     const playerBlocks = Array.from(document.querySelectorAll('#player .block'));
     let block;
     do {
@@ -294,6 +303,7 @@ function computerAttack() {
             if (ships.every(ship => ship.isSunk)) {
                 // If all ships have been sunk, the computer wins
                 console.log('Computer wins!');
+                isGameOver = true;
             }
         }
     } else {
