@@ -102,3 +102,11 @@
 .highlight {
     background-color: rgba(0, 0, 0, 0.3); /* Change this to the color you want for the highlight */
 }
+
+.block.hit {
+    background-color: black;
+}
+
+.block.miss {
+    background-color: white;
+}

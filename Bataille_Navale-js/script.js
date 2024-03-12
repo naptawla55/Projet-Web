@@ -3,6 +3,9 @@ const optionContainer = document.querySelector('.option-container')
 const flipButton = document.querySelector('#flip-button')
 const startButton = document.querySelector('#start-button')
 const resetButton = document.querySelector('#reset-button')
+const hitSound = new Audio('sounds/hit.mp3');
+const missSound = new Audio('sounds/miss.mp3');
+const hitPlayerSound = new Audio('sounds/hit_player.mp3');
 
 let angle = 0
 function flip () {
@@ -225,6 +228,8 @@ resetButton.addEventListener('click', resetGame)
 
 
 function playerAttack(e) {
+    const messageDivPlayer = document.getElementById('message-player');
+
     // If the game is over, return immediately
     if (isGameOver) {
         return;
@@ -241,7 +246,9 @@ function playerAttack(e) {
     if (shipName) {
         // If the block is part of a ship, mark it as hit
         block.classList.add('hit');
-        console.log('Hit!');
+        hitSound.play();
+        messageDivPlayer.textContent = 'Player Hit!';
+        console.log('Player Hit!');
 
         // Check if all blocks of the ship have been hit
         const shipBlocks = Array.from(document.querySelectorAll(`#computer .${shipName}`));
@@ -249,11 +256,13 @@ function playerAttack(e) {
             // If all blocks of the ship have been hit, mark the ship as sunk
             const ship = ships.find(ship => ship.name === shipName);
             ship.isSunk = true;
-            console.log(shipName + ' sunk!');
+            messageDivPlayer.textContent = 'player sunk ' + shipName + '!';
+            console.log('player sunk ' + shipName + '!');
 
             // Check if all ships have been sunk
             if (ships.every(ship => ship.isSunk)) {
                 // If all ships have been sunk, the player wins
+                messageDivPlayer.textContent = 'You win!';
                 console.log('You win!');
                 isGameOver = true;
             }
@@ -261,6 +270,8 @@ function playerAttack(e) {
     } else {
         // If the block is not part of a ship, mark it as miss
         block.classList.add('miss');
+        missSound.play();
+        messageDivPlayer.textContent = 'Player miss!';
         console.log('Miss!');
     }
 
@@ -269,11 +280,13 @@ function playerAttack(e) {
 
     // If it's the computer's turn, make the computer attack
     if (currentPlayer === 'computer') {
-        computerAttack();
+        setTimeout(computerAttack, 1000); // Add a delay before the computer takes its turn
     }
 }
 
 function computerAttack() {
+    const messageDivComputer = document.getElementById('message-computer');
+
     // If the game is over, return immediately
     if (isGameOver) {
         return;
@@ -289,6 +302,8 @@ function computerAttack() {
     if (shipName) {
         // If the block is part of a ship, mark it as hit
         block.classList.add('hit');
+        hitPlayerSound.play();
+        messageDivComputer.textContent = 'Computer Hit!';
         console.log('Computer hit!');
 
         // Check if all blocks of the ship have been hit
@@ -297,11 +312,13 @@ function computerAttack() {
             // If all blocks of the ship have been hit, mark the ship as sunk
             const ship = ships.find(ship => ship.name === shipName);
             ship.isSunk = true;
+            messageDivComputer.textContent = 'Computer sunk ' + shipName + '!';
             console.log('Computer sunk ' + shipName + '!');
 
             // Check if all ships have been sunk
             if (ships.every(ship => ship.isSunk)) {
                 // If all ships have been sunk, the computer wins
+                messageDivComputer.textContent = 'Computer Wins!';
                 console.log('Computer wins!');
                 isGameOver = true;
             }
@@ -309,6 +326,7 @@ function computerAttack() {
     } else {
         // If the block is not part of a ship, mark it as miss
         block.classList.add('miss');
+        messageDivComputer.textContent = 'Computer miss!';
         console.log('Computer miss!');
     }
 
