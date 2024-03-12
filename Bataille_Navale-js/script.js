@@ -6,6 +6,8 @@ const resetButton = document.querySelector('#reset-button')
 const hitSound = new Audio('sounds/hit.mp3');
 const missSound = new Audio('sounds/miss.mp3');
 const hitPlayerSound = new Audio('sounds/hit_player.mp3');
+const looseSound = new Audio('sounds/lose.mp3');
+const winSound = new Audio('sounds/win.mp3');
 
 let angle = 0
 function flip () {
@@ -263,6 +265,7 @@ function playerAttack(e) {
             if (ships.every(ship => ship.isSunk)) {
                 // If all ships have been sunk, the player wins
                 messageDivPlayer.textContent = 'You win!';
+                winSound.play();
                 console.log('You win!');
                 isGameOver = true;
             }
@@ -319,6 +322,7 @@ function computerAttack() {
             if (ships.every(ship => ship.isSunk)) {
                 // If all ships have been sunk, the computer wins
                 messageDivComputer.textContent = 'Computer Wins!';
+                looseSound.play();
                 console.log('Computer wins!');
                 isGameOver = true;
             }
