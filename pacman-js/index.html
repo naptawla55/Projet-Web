@@ -4,18 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pacman</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body style="margin: 0px; background-color: black;">
-    <!--add the mucis once i start the game-->
-    <audio src="assets/PacManMusic.mp3" type="audio/mp3"></audio>
-    <canvas id ="canvas" width="500" height="500"></canvas>
-    <div style="display: none">
-        <img id="animation" src="assets/animations.gif" alt="">
-        <img id="ghost" src="assets/ghost.png" alt="">
-    </div>
-    <button id="restartButton">Restart</button>
-    <script src="ghost.js"></script>
-    <script src="pacman.js"></script>
-    <script src="game.js"></script>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="assets/jpg.jpg" alt="Logo" class="logo"> 
+        </div>
+        <h1>My Games</h1>
+    </header>
+    <main>
+        <div id="game-container">
+            <!--add the music once I start the game-->
+            <audio src="assets/PacManMusic.mp3" type="audio/mp3"></audio>
+            <canvas id="canvas" width="500" height="500"></canvas>
+            <div style="display: none">
+                <img id="animation" src="assets/animations.gif" alt="">
+                <img id="ghost" src="assets/ghost.png" alt="">
+            </div>
+            <button id="restartButton">Restart</button>
+            <script src="ghost.js"></script>
+            <script src="pacman.js"></script>
+            <script src="game.js"></script>
+        </div>
+        <aside id="friend-list">
+            <h2>Friends</h2>
+            <ul>
+                <li><span class="online-dot"></span>Friend 1</li>
+                <li><span class="online-dot"></span>Friend 2</li>
+                <li><span class="online-dot"></span>Friend 3</li>
+               
+            </ul>
+        </aside>
+    </main>
 </body>
 </html>
