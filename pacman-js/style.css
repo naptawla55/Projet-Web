@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body, button, #friend-list {
+    font-family: 'Press Start 2P', cursive;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -33,7 +39,11 @@ main {
     flex-grow: 1;
     position: relative;
 }
+
 #friend-list {
+    width: 100%;
+    max-height: 150px;
+    overflow-y: scroll;
     width: 200px;
     background-color: black; 
     color: white;
@@ -51,6 +61,9 @@ main {
     padding: 10px 0;
     display: flex;
     align-items: center;
+}
+#friend-list li + li {
+    border-top: 1px solid #333;
 }
 .online-dot {
     height: 10px;
