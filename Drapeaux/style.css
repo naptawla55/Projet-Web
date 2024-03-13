@@ -163,10 +163,19 @@ button:hover {
   z-index: 1000; /* Ensure the sidebar is above other content */
 }
 
-#friends-sidebar h2 {
-  margin-top: 0;
+#friends-sidebar {
+  position: fixed;
+  top: 110px; /* Adjusted to be right below the header. Change this value if your header size or spacing is different. */
+  right: 0;
+  width: 200px; /* Made narrower. Adjust according to your preference. */
+  height: calc(100% - 110px); /* This dynamically calculates the height so the sidebar starts just below the header and extends to the bottom of the viewport. Adjust the subtracted value based on your header's actual bottom position. */
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  overflow-y: auto; /* Adds scroll if content overflows */
+  z-index: 1000; /* Ensures the sidebar is above other content */
 }
-
 #online-friends {
   list-style: none;
   padding: 0;
