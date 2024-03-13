@@ -3,6 +3,9 @@ const canvas = document.getElementById("canvas");
 const canvasContext = canvas.getContext("2d");
 const pacmanFrames = document.getElementById("animation")
 const ghostFrames = document.getElementById("ghost");
+const eatSound = new Audio('assets/pacman_chomp.wav');
+const deathSound = new Audio('assets/pacman_death.wav');
+const startSound = new Audio('assets/pacman_beginning.wav');
 
 let createRect = (x, y, width, height, color) => {
     canvasContext.fillStyle = color;
@@ -124,6 +127,7 @@ let eatfood = () => {
                     pacman.y + pacman.height / 2 > i * oneBlockSize &&
                     pacman.y + pacman.height / 2 < i * oneBlockSize + oneBlockSize) {
                         map[i][j] = 0;
+                        eatSound.play(); // Play the sound
                     }
             }
         }
@@ -174,6 +178,7 @@ let draw = () => {
         canvasContext.font = "50px verdana";
         canvasContext.textAlign = "center";
         canvasContext.fillText("Game Over", canvas.width / 2, canvas.height / 2);
+        deathSound.play();
     }
 };
 
