@@ -9,6 +9,7 @@ const hitPlayerSound = new Audio('sounds/hit_player.mp3');
 const looseSound = new Audio('sounds/lose.mp3');
 const winSound = new Audio('sounds/win.mp3');
 
+
 let angle = 0
 function flip () {
     const optionShips = Array.from(optionContainer.children)
@@ -60,6 +61,9 @@ const cruiser = new Ship('cruiser', 3)
 const battleship = new Ship('battleship', 4)
 const carrier = new Ship('carrier', 5)
 
+let playerShips = [destroyer, submarine, cruiser, battleship, carrier];
+let computerShips = [new Ship('destroyer', 2), new Ship('submarine', 3), new Ship('cruiser', 3), new Ship('battleship', 4), new Ship('carrier', 5)];
+
 const ships = [destroyer, submarine, cruiser, battleship, carrier]
 let notDropped
 
@@ -106,6 +110,9 @@ function addShipPiece (user, ship, startId, randomPlacement = false) {
 
     shipBlocks.forEach(shipBlock => {
         shipBlock.classList.add(ship.name, 'taken');
+        if (user === 'player') {
+            shipBlock.classList.add(ship.name);
+        }
     });
 
     if (user === 'computer') {
@@ -231,6 +238,7 @@ resetButton.addEventListener('click', resetGame)
 
 function playerAttack(e) {
     const messageDivPlayer = document.getElementById('message-player');
+    const messageDivComputer = document.getElementById('message-computer');
 
     // If the game is over, return immediately
     if (isGameOver) {
@@ -258,18 +266,19 @@ function playerAttack(e) {
             // If all blocks of the ship have been hit, mark the ship as sunk
             const ship = ships.find(ship => ship.name === shipName);
             ship.isSunk = true;
-            messageDivPlayer.textContent = 'player sunk ' + shipName + '!';
-            console.log('player sunk ' + shipName + '!');
+            messageDivComputer.textContent = 'Computer sunk ' + shipName + '!';
+            console.log('Computer sunk ' + shipName + '!');
 
             // Check if all ships have been sunk
             if (ships.every(ship => ship.isSunk)) {
                 // If all ships have been sunk, the player wins
-                messageDivPlayer.textContent = 'You win!';
+                messageDivPlayer.textContent = 'You Win!';
                 winSound.play();
                 console.log('You win!');
                 isGameOver = true;
             }
         }
+
     } else {
         // If the block is not part of a ship, mark it as miss
         block.classList.add('miss');
@@ -293,9 +302,11 @@ function playerAttack(e) {
             computerAttack();
 
             // Re-enable the click event listener on the computer's blocks
-            computerBlocks.forEach(block => {
-                block.addEventListener('click', playerAttack);
-            });
+            if (currentPlayer === 'player') {
+                computerBlocks.forEach(block => {
+                    block.addEventListener('click', playerAttack);
+                });
+            }
         }, 1000); // Add a delay before the computer takes its turn
     }
 }
@@ -315,10 +326,12 @@ function computerAttack() {
     if (lastHit !== null) {
         // If the last hit was successful, try the next block in the same direction
         block = getNextBlock(playerBlocks, lastHit, hitDirection);
-        if (!block || block.classList.contains('hit') || block.classList.contains('miss')) {
+        let attempts = 0;
+        while ((!block || block.classList.contains('hit') || block.classList.contains('miss')) && attempts < 4) {
             // If the next block is out of bounds or has already been hit or missed, switch the direction
             hitDirection = switchDirection(hitDirection);
             block = getNextBlock(playerBlocks, lastHit, hitDirection);
+            attempts++;
         }
     }
 
@@ -375,6 +388,7 @@ function computerAttack() {
     if (currentPlayer === 'player') {
         const computerBlocks = Array.from(document.querySelectorAll('#computer .block'));
         computerBlocks.forEach(block => {
+            block.removeEventListener('click', playerAttack);
             block.addEventListener('click', playerAttack);
         });
     }
