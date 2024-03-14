@@ -61,6 +61,7 @@ let map = [
     [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 ];
+let initialMap = JSON.parse(JSON.stringify(map));
 
 let randomTargetsForGhosts = [
     { x: 1 * oneBlockSize, y: 1 * oneBlockSize },
@@ -135,6 +136,8 @@ let eatfood = () => {
 }
 
 let createScore = () => {
+    canvasContext.textAlign = "start";
+    canvasContext.textBaseline = "alphabetic";
     let score = 238;  // to improve
     for( let i = 0 ; i < map.length ; i++) {
         for( let j = 0 ; j < map[0].length; j++) {
@@ -162,6 +165,7 @@ let startgame = () => {
 }
 
 let draw = () => {
+    canvasContext.clearRect(0, 0, canvas.width, canvas.height);
     startgame();
     createRect(0,0, canvas.width, canvas.height, "black");
     //todo
@@ -249,6 +253,8 @@ let restartGame = () => {
     clearInterval(gameInterval); // Stop the game loop
     createNewpacman(); // Reset pacman
     createGhosts(); // Reset ghosts
+    respawnPallets(); // Respawn pellets
+    map = JSON.parse(JSON.stringify(initialMap)); // Reset map to initial state
     gameInterval = setInterval(gameLoop, 1000 / fps); // Start the game loop again
 };
 
