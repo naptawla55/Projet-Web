@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Games Carousel</title>
+  <title>Page d'accueil</title>
   <link href="css/main.css" rel="stylesheet">
 </head>
 <body>
@@ -13,34 +13,33 @@
       <a href="boutique.html" class="nav-item">Boutique</a>
       <a href="#" class="nav-item">À propos</a>
     </div>
-    <button class="connect-button" onclick="window.location.href='login.html';">connecter</button>
+    <button class="login-button" onclick="window.location.href='login.html';">Connexion</button>
   </nav>
 
   <main class="main-content">
     <section class="banner">
-      <input type="radio" id="slide1" name="slides" checked>
-      <input type="radio" id="slide2" name="slides">
-      <input type="radio" id="slide3" name="slides">
-      
-      <div class="banner-images">
-        <img src="assets/apps.11136.68705183924321609.fa49331a-2294-45bc-900c-45876e4cd287.jpeg" alt="Modern Naval Warfare" class="banner-image" id="slide1" />
-        <img src="assets/world-of-warships-wargaming-net-ship-explosion-wallpaper.jpg" alt="Second Image" class="banner-image" id="slide2" />
-        <img src="assets/flags-quiz-thumbnail.png" alt="Third Image" class="banner-image" id="slide3" />
+      <div class="carousel">
+        <img src="assets/world-of-warships-wargaming-net-ship-explosion-wallpaper.jpg" alt="Modern Naval Warfare" class="banner-image" data-game-url="../Bataille_Navale-js/index.html">
+        <img src="assets/pac-man-pictures-7ze4b1v2lpu09ynm.jpg" alt="Game 2" class="banner-image" style="display: none;" data-game-url="../pacman-js/index.html">
+        <img src="assets/flags-quiz-thumbnail.png" alt="Game 3" class="banner-image" style="display: none;" data-game-url="../Drapeaux/index.html">
+        <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+        <a class="next" onclick="changeSlide(1)">&#10095;</a>
       </div>
-      
-      <section class="play-section">
-        <h2 class="play-title">Jouer</h2>
-        <p class="play-description">un jeu de société dans lequel deux joueurs doivent placer des « navires » sur une grille tenue secrète et tenter de « toucher » les navires adverses.</p>
-        <button class="play-button">▶</button>
-      </section>
-      
-      <div class="carousel-indicators">
-        <label for="slide1" class="indicator"></label>
-        <label for="slide2" class="indicator"></label>
-        <label for="slide3" class="indicator"></label>
-      </div>
-    </section>    
+    </section>
+    
+    <section class="play-section">
+      <h2 class="play-title">Jouer</h2>
+      <p class="play-description">Un jeu de société dans lequel deux joueurs doivent placer des « navires » sur une grille tenue secrète et tenter de « toucher » les navires adverses.</p>
+      <button class="play-button">▶</button>
+    </section>
+    
+    <div class="carousel-indicators">
+      <span class="indicator active"></span>
+      <span class="indicator"></span>
+      <span class="indicator"></span>
+    </div>
   </main>
+  
   <footer class="footer">
     <div class="footer-content">
       <p>© 2024 My Games. All rights reserved.</p>
@@ -49,17 +48,32 @@
   </footer>
 
   <script>
-    // Wait for the DOM to be loaded
-    document.addEventListener('DOMContentLoaded', (event) => {
-      // Get all the indicators
-      const indicators = document.querySelectorAll('.carousel-indicators .indicator');
-      
-      indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', function() {
-          // Simulate a click on the associated radio input
-          document.getElementById(`slide${index+1}`).checked = true;
-        });
-      });
+    var slideIndex = 0;
+    showSlides(slideIndex);
+
+    function changeSlide(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("banner-image");
+      if (n >= slides.length) {slideIndex = 0}
+      if (n < 0) {slideIndex = slides.length - 1}
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none"; 
+      }
+      slides[slideIndex].style.display = "block"; 
+    }
+
+    document.querySelector('.play-button').addEventListener('click', function() {
+      var currentSlide = document.getElementsByClassName("banner-image")[slideIndex];
+      var gameUrl = currentSlide.getAttribute('data-game-url'); 
+      if (gameUrl) {
+        window.location.href = gameUrl; 
+      } else {
+        console.error('Game URL not found');
+      }
     });
   </script>
 </body>
