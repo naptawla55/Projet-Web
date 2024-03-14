@@ -1,4 +1,4 @@
-<!DOCTYPE html>ints
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -13,7 +13,6 @@
       <a href="boutiqueco.html" class="nav-item">Boutique</a>
       <a href="#" class="nav-item">À propos</a>
     </div>
-    <!-- Section pour l'utilisateur connecté -->
     <div class="user-profile">
       <img src="assets/usr.jpg" alt="Nom de l'utilisateur">
       <span class="user-xp">1000 Points</span>
@@ -22,13 +21,18 @@
 
   <main class="main-content">
     <section class="banner">
-      <img src="assets/images.jpg" alt="Modern Naval Warfare" class="banner-image">
-      <div class="banner-title"></div>
+      <div class="carousel">
+        <img src="assets/flags-quiz-thumbnail.png" alt="Modern Naval Warfare" class="banner-image">
+        <img src="assets/pac-man-pictures-7ze4b1v2lpu09ynm.jpg" alt="Game 2" class="banner-image" style="display: none;">
+        <img src="assets/world-of-warships-wargaming-net-ship-explosion-wallpaper.jpg" alt="Game 3" class="banner-image" style="display: none;">
+        <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+        <a class="next" onclick="changeSlide(1)">&#10095;</a>
+      </div>
     </section>
     
     <section class="play-section">
       <h2 class="play-title">Jouer</h2>
-      <p class="play-description">un jeu de société dans lequel deux joueurs doivent placer des « navires » sur une grille tenue secrète et tenter de « toucher » les navires adverses.</p>
+      <p class="play-description">Un jeu de société dans lequel deux joueurs doivent placer des « navires » sur une grille tenue secrète et tenter de « toucher » les navires adverses.</p>
       <button class="play-button">▶</button>
     </section>
     
@@ -38,11 +42,32 @@
       <span class="indicator"></span>
     </div>
   </main>
+  
   <footer class="footer">
     <div class="footer-content">
       <p>© 2024 My Games. All rights reserved.</p>
       <a href="#" class="privacy-policy">Privacy Policy</a>
     </div>
   </footer>
+
+  <script>
+    var slideIndex = 0;
+    showSlides(slideIndex);
+
+    function changeSlide(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("banner-image");
+      if (n >= slides.length) {slideIndex = 0}
+      if (n < 0) {slideIndex = slides.length - 1}
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none"; 
+      }
+      slides[slideIndex].style.display = "block"; 
+    }
+  </script>
 </body>
 </html>

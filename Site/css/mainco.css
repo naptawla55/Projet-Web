@@ -162,4 +162,34 @@
     margin-top: 0.5rem;
     display: inline-block;
   }
+  .carousel {
+    position: relative;
+    display: flex; /* Use flex to center the images and arrows */
+    align-items: center; /* Align items vertically */
+    justify-content: center; /* Center the content horizontally */
+  }
   
+  .banner-image {
+    max-width: 100%; /* Ensure images are responsive and do not overflow their container */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Display images as block to enable centering */
+    /* Ensure the image does not display beyond the viewport height; adjust as necessary */
+    max-height: 80vh; 
+  }
+  
+  .carousel .prev, .carousel .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background-color: rgba(0,0,0,0.5); /* Optional: Adds background for better visibility */
+  }
+  
+  .carousel .next {
+    right: 10px; /* Adjust distance from the right edge */
+  }
+  
+  .carousel .prev {
+    left: 10px; /* Adjust distance from the left edge */
+  }
