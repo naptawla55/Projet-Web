@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/inscription.css">
+<title>Inscription</title>
+</head>
+<body>
+<div class="login-container">
+    <div class="login-header">
+        <img src="assets/jpg.jpg" alt="Logo">
+        <h1>Inscription</h1>
+    </div>
+    <form class="login-form" onsubmit="event.preventDefault(); handleRegistration();">
+      <input type="text" id="full-name" name="full-name" placeholder="Nom complet" required>
+      <input type="email" id="email" name="email" placeholder="Adresse e-mail" required>
+      <input type="password" id="password" name="password" placeholder="Mot de passe" required minlength="8">
+      <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirmez le mot de passe" required minlength="8">
+      <button type="submit">S'inscrire</button>
+      <p>Déjà inscrit ? <a href="login.html">Se connecter</a></p>
+  </form>
+</div>
+<div class="download-section">
+    <img src="assets/jpg.jpg" alt="Family">
+    <p>Téléchargez l’application pour garder l'oeil sur les activités de vos enfants</p>
+    <button type="button">Download</button>
+</div>
+<script>
+function handleRegistration() {
+    window.location.href = 'login.html'; 
+}
+</script>
+</body>
+</html>
