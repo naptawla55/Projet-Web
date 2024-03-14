@@ -110,3 +110,11 @@
 .block.miss {
     background-color: white;
 }
+
+#computer .block.taken {
+    background: none !important;
+}
+
+#computer .block.taken.hit {
+    background: black !important;
+}
