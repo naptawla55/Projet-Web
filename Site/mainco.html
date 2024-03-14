@@ -22,9 +22,9 @@
   <main class="main-content">
     <section class="banner">
       <div class="carousel">
-        <img src="assets/flags-quiz-thumbnail.png" alt="Modern Naval Warfare" class="banner-image">
-        <img src="assets/pac-man-pictures-7ze4b1v2lpu09ynm.jpg" alt="Game 2" class="banner-image" style="display: none;">
-        <img src="assets/world-of-warships-wargaming-net-ship-explosion-wallpaper.jpg" alt="Game 3" class="banner-image" style="display: none;">
+        <img src="assets/world-of-warships-wargaming-net-ship-explosion-wallpaper.jpg" alt="Modern Naval Warfare" class="banner-image" data-game-url="../Bataille_Navale-js/index.html">
+        <img src="assets/pac-man-pictures-7ze4b1v2lpu09ynm.jpg" alt="Game 2" class="banner-image" style="display: none;" data-game-url="../pacman-js/index.html">
+        <img src="assets/flags-quiz-thumbnail.png" alt="Game 3" class="banner-image" style="display: none;" data-game-url="../Drapeaux/index.html">
         <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
         <a class="next" onclick="changeSlide(1)">&#10095;</a>
       </div>
@@ -68,6 +68,16 @@
       }
       slides[slideIndex].style.display = "block"; 
     }
+
+    document.querySelector('.play-button').addEventListener('click', function() {
+      var currentSlide = document.getElementsByClassName("banner-image")[slideIndex];
+      var gameUrl = currentSlide.getAttribute('data-game-url'); 
+      if (gameUrl) {
+        window.location.href = gameUrl; 
+      } else {
+        console.error('Game URL not found');
+      }
+    });
   </script>
 </body>
 </html>
