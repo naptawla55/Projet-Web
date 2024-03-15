@@ -146,10 +146,9 @@ button:hover {
   font-weight: bold;
   font-size: 30px;
   text-transform: uppercase;
-  /* Couleur du texte ajustée pour correspondre au nouveau thème */
+  
   color: #FFD700;
 }
-/* Online friends sidebar styles */
 #friends-sidebar {
   position: fixed;
   top: 0;
@@ -160,21 +159,20 @@ button:hover {
   color: white;
   padding: 10px;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-  z-index: 1000; /* Ensure the sidebar is above other content */
+  z-index: 1000;
 }
 
 #friends-sidebar {
   position: fixed;
-  top: 110px; /* Adjusted to be right below the header. Change this value if your header size or spacing is different. */
+  top: 110px; 
   right: 0;
-  width: 200px; /* Made narrower. Adjust according to your preference. */
-  height: calc(100% - 110px); /* This dynamically calculates the height so the sidebar starts just below the header and extends to the bottom of the viewport. Adjust the subtracted value based on your header's actual bottom position. */
-  background-color: #333;
+  width: 200px; 
+  height: calc(100% - 110px); 
   color: white;
   padding: 10px;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-  overflow-y: auto; /* Adds scroll if content overflows */
-  z-index: 1000; /* Ensures the sidebar is above other content */
+  overflow-y: auto; 
+  z-index: 1000; 
 }
 #online-friends {
   list-style: none;
@@ -195,7 +193,7 @@ button:hover {
   margin-left: 10px;
 }
 
-/* Home button styles */
+
 #home-button {
   position: fixed;
   top: 10px;
@@ -208,7 +206,7 @@ button:hover {
   color: black;
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  z-index: 1000; /* Ensure the button is above other content */
+  z-index: 1000;
 }
 
 #home-button:hover {
