@@ -3,6 +3,8 @@ class Ghost {
     constructor(x ,y ,width ,height, speed, imageX, imageY, imageWidth, imageHeight, range) {
         this.x = x;
         this.y = y;
+        this.startX = x; // Starting x-coordinate
+        this.startY = y; // Starting y-coordinate
         this.width = width;
         this.height = height;
         this.speed = speed;
@@ -28,7 +30,7 @@ class Ghost {
     }
 
     moveProcess() {
-        if(this.isInRangeOfPacman()) {
+        if(this.isInRangeOfPacman() && !powerMode) {
             this.target = pacman;
         } else {
             this.target = randomTargetsForGhosts[this.randomTragetIndex]
@@ -49,19 +51,25 @@ class Ghost {
             pacman.y + pacman.height > this.y
         ) {
             // Pacman is touched by the ghost
-            console.log(pacman.lives);
-            console.log("Pacman is eaten by the ghost!");
-            pacman.lives--; // Decrement Pacman's lives
-    
-            if (pacman.lives == 0) {
-                // No more lives left, game over
-                console.log("Game Over!");
-                clearInterval(gameInterval); // Stop the game loop or perform other game over actions
+            if (powerMode) {
+                // Respawn ghost and add to score
+                this.x = this.startX;
+                this.y = this.startY;
+                score += 200;
+                console.log('Ghost was eaten. Respawned at starting location and score increased by 200.');
             } else {
-                // Pacman still has lives left, respawn him
-                console.log("Pacman is still alive!");
-                teleportPacman(); // Respawn Pacman
-                
+                // Kill pacman
+                pacman.lives--; // Decrement Pacman's lives
+                console.log('Pacman was killed. Lives left: ' + pacman.lives);
+                if (pacman.lives == 0) {
+                    // No more lives left, game over
+                    clearInterval(gameInterval); // Stop the game loop or perform other game over actions
+                    console.log('Game over. No more lives left.');
+                } else {
+                    // Pacman still has lives left, respawn him
+                    teleportPacman(); // Respawn Pacman
+                    console.log('Pacman respawned.');
+                }
             }
         }
     }
@@ -244,10 +252,36 @@ class Ghost {
     
 
     draw() {
+        // Create a temporary canvas to draw the ghost image
+        let tempCanvas = document.createElement('canvas');
+        tempCanvas.width = this.imageWidth;
+        tempCanvas.height = this.imageHeight;
+        let tempCtx = tempCanvas.getContext('2d');
+
+        // Draw the ghost image to the temporary canvas
+        tempCtx.drawImage(ghostFrames, this.imageX, this.imageY, this.imageWidth, this.imageHeight, 0, 0, this.imageWidth, this.imageHeight);
+
+        if (powerMode) {
+            // Get the image data from the temporary canvas
+            let imageData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
+            let data = imageData.data;
+
+            // Loop through all pixels and invert the color
+            for (let i = 0; i < data.length; i += 4) {
+                data[i] = 255 - data[i];     // red
+                data[i + 1] = 255 - data[i + 1]; // green
+                data[i + 2] = 255 - data[i + 2]; // blue
+            }
+
+            // Put the image data back into the temporary canvas
+            tempCtx.putImageData(imageData, 0, 0);
+        }
+
+        // Draw the resulting image from the temporary canvas to the main canvas
         canvasContext.save();
-        canvasContext.drawImage(ghostFrames, this.imageX, this.imageY, this.imageWidth, this.imageHeight, this.x, this.y, this.width, this.height);
+        canvasContext.drawImage(tempCanvas, 0, 0, this.imageWidth, this.imageHeight, this.x, this.y, this.width, this.height);
         canvasContext.restore();
-    } 
+    }  
 
     getMapX() {
         return parseInt(this.x / oneBlockSize);

@@ -7,6 +7,7 @@ const eatSound = new Audio('assets/pacman_chomp.wav');
 const deathSound = new Audio('assets/pacman_death.wav');
 const startSound = new Audio('assets/pacman_beginning.wav');
 
+
 let createRect = (x, y, width, height, color) => {
     canvasContext.fillStyle = color;
     canvasContext.fillRect(x, y, width, height);
@@ -118,6 +119,9 @@ let drawBiggestFood = () => {
 }
   
 
+let powerMode = false;
+let powerModeTimer = null;
+
 let eatfood = () => {
     for( let i = 0 ; i < map.length ; i++) {
         for( let j = 0 ; j < map[0].length; j++) {
@@ -127,9 +131,19 @@ let eatfood = () => {
                     pacman.x + pacman.width / 2 < j * oneBlockSize + oneBlockSize &&
                     pacman.y + pacman.height / 2 > i * oneBlockSize &&
                     pacman.y + pacman.height / 2 < i * oneBlockSize + oneBlockSize) {
+                        if(map[i][j] == 3) { // If it's a power pellet
+                            powerMode = true; // Set powerMode to true
+                            console.log('Pacman ate a power pellet. powerMode is now ' + powerMode);
+                            // Set powerMode back to false after 10 seconds
+                            clearTimeout(powerModeTimer);
+                            powerModeTimer = setTimeout(() => {
+                                powerMode = false;
+                                console.log('Power mode ended.');
+                            }, 10000);
+                        }
                         map[i][j] = 0;
                         eatSound.play(); // Play the sound
-                    }
+                }
             }
         }
     }
