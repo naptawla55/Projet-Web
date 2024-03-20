@@ -6,6 +6,7 @@ const ghostFrames = document.getElementById("ghost");
 const eatSound = new Audio('assets/pacman_chomp.wav');
 const deathSound = new Audio('assets/pacman_death.wav');
 const startSound = new Audio('assets/pacman_beginning.wav');
+const victorySound = new Audio('assets/victory.mp3');
 
 
 let createRect = (x, y, width, height, color) => {
@@ -81,6 +82,25 @@ let update = () => {
     for(let i = 0 ; i < ghosts.length ; i++) {
         ghosts[i].moveProcess();
         ghosts[i].eat(pacman);
+    }
+
+    // Check for victory condition
+    let hasPallets = false;
+    for(let i = 0 ; i < map.length ; i++) {
+        for(let j = 0 ; j < map[0].length ; j++) {
+            if(map[i][j] == 2 || map[i][j] == 3) {
+                hasPallets = true;
+                break;
+            }
+        }
+        if(hasPallets) break;
+    }
+
+    if(!hasPallets) {
+        // Victory condition met
+        console.log('Victory! All pallets have been eaten.');
+        clearInterval(gameInterval); // Stop the game loop
+        victorySound.play(); // Play victory sound
     }
 };
 
@@ -197,6 +217,26 @@ let draw = () => {
         canvasContext.textAlign = "center";
         canvasContext.fillText("Game Over", canvas.width / 2, canvas.height / 2);
         deathSound.play();
+    }
+
+    // Check for victory condition
+    let hasPallets = false;
+    for(let i = 0 ; i < map.length ; i++) {
+        for(let j = 0 ; j < map[0].length ; j++) {
+            if(map[i][j] == 2 || map[i][j] == 3) {
+                hasPallets = true;
+                break;
+            }
+        }
+        if(hasPallets) break;
+    }
+
+    if(!hasPallets) {
+        // Victory condition met
+        canvasContext.fillStyle = "green";
+        canvasContext.font = "50px verdana";
+        canvasContext.textAlign = "center";
+        canvasContext.fillText("You won!", canvas.width / 2, canvas.height / 2);
     }
 };
 
