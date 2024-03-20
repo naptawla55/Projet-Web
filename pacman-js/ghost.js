@@ -35,10 +35,13 @@ class Ghost {
         } else {
             this.target = randomTargetsForGhosts[this.randomTragetIndex]
         }
-        this.changeDirectionIfPossible();
-        this.moveForwards()
-        if(this.checkCollision()) {
-            this.moveBackwards();
+        // Check if the ghost is off-screen
+        if (this.x >= 0 && this.y >= 0) {
+            this.changeDirectionIfPossible();
+            this.moveForwards()
+            if(this.checkCollision()) {
+                this.moveBackwards();
+            }
         }
     }
 
@@ -52,11 +55,21 @@ class Ghost {
         ) {
             // Pacman is touched by the ghost
             if (powerMode) {
-                // Respawn ghost and add to score
-                this.x = this.startX;
-                this.y = this.startY;
-                score += 200;
-                console.log('Ghost was eaten. Respawned at starting location and score increased by 200.');
+                // Add to score
+                pacman.score += 200; // Add 200 points to the score
+                console.log('Ghost was eaten. Score increased by 200.');
+
+                // Hide the ghost
+                this.x = -100;
+                this.y = -100;
+
+                // Delay the respawn of the ghost
+                setTimeout(() => {
+                    // Respawn ghost
+                    this.x = this.startX;
+                    this.y = this.startY;
+                    console.log('Ghost respawned at starting location.');
+                }, 2000); // 2000 milliseconds = 2 seconds
             } else {
                 // Kill pacman
                 pacman.lives--; // Decrement Pacman's lives
