@@ -3,19 +3,18 @@ class Pacman {
     constructor(x ,y ,width ,height, speed, lives) {
         this.x = x;
         this.y = y;
-        this.width = width;
-        this.height = height;
+        this.width = oneBlockSize;
+        this.height = oneBlockSize;
         this.speed = speed;
         this.direction = DIRECTION_RIGHT;
         this.nextDirection = this.direction;
         this.currentFrame = 1;
         this.frameCount = 7;
         this.lives = 5;
+        this.frameDelay = 0;
+        this.changeAnimation();
+        setInterval(this.changeAnimation.bind(this), 100);
         
-        setInterval(() => {
-            this.changeAnimation();
-        }, 100);
-
     }
 
     moveProcess() {
@@ -96,18 +95,22 @@ class Pacman {
     }
     
     changeAnimation() {
-        this.currentFrame = this.currentFrame == this.frameCount ? 1 : this.currentFrame + 1;
+        this.frameDelay++;
+        if (this.frameDelay >= 1) { 
+            this.currentFrame = this.currentFrame == this.frameCount ? 1 : this.currentFrame + 1;
+            this.frameDelay = 0;
+        }
     }
     
 
     draw() {
         canvasContext.save();
-        canvasContext.translate(this.x + oneBlockSize/ 2, this.y + oneBlockSize/ 2);
+        canvasContext.translate(this.x + oneBlockSize / 2, this.y + oneBlockSize / 2);
         canvasContext.rotate(this.direction * 90 * Math.PI / 180);
-        canvasContext.translate(-(this.x + oneBlockSize/ 2), -(this.y + oneBlockSize/ 2));
-        canvasContext.drawImage(pacmanFrames, (this.currentFrame - 1) * oneBlockSize, 0, oneBlockSize, oneBlockSize, this.x, this.y, this.width, this.height);
+        canvasContext.translate(-oneBlockSize / 2, -oneBlockSize / 2);
+        canvasContext.drawImage(pacmanFrames, (this.currentFrame - 1) * oneBlockSize*0.67, 0, oneBlockSize*0.65, oneBlockSize*0.65, 0, 0, oneBlockSize, oneBlockSize);
         canvasContext.restore();
-    } 
+    }
 
     getMapX() {
         return parseInt(this.x / oneBlockSize);

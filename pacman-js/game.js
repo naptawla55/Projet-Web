@@ -14,7 +14,7 @@ let createRect = (x, y, width, height, color) => {
     canvasContext.fillRect(x, y, width, height);
 };
 let fps = 30;
-let oneBlockSize = 20;
+let oneBlockSize = 30;
 let wallColor = "#342DCA";
 let wallSpaceWidth = oneBlockSize / 1.5;
 let WallOffset = (oneBlockSize - wallSpaceWidth) / 2;
@@ -63,6 +63,11 @@ let map = [
     [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 ];
+
+let map2 = [
+
+];
+
 let initialMap = JSON.parse(JSON.stringify(map));
 
 let randomTargetsForGhosts = [
