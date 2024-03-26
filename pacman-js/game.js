@@ -93,28 +93,39 @@ let map_miage = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 ];
 
+// Store the initial state of the maps
+let initialMap1 = JSON.parse(JSON.stringify(map1));
+let initialMap_miage = JSON.parse(JSON.stringify(map_miage));
+
+function cloneMap(originalMap) {
+    let newMap = [];
+    for(let i = 0; i < originalMap.length; i++) {
+        newMap[i] = [...originalMap[i]];
+    }
+    return newMap;
+}
+
 document.getElementById("switchMapButton").addEventListener("click", () => {
     console.log("Switch Map button clicked");
-    console.log("Current map: " + (map === map1 ? "map1" : "map_miage"));
+    console.log("Current map: " + currentMap);
 
     // Switch the map
-    if(map === map1) {
-        map = map_miage;
+    if(currentMap === 'map1') {
+        map = cloneMap(map_miage);
+        currentMap = 'map_miage';
     } else {
-        map = map1;
+        map = cloneMap(map1);
+        currentMap = 'map1';
     }
 
     // Reset the game state
     restartGame();
 
-    console.log("New map: " + (map === map1 ? "map1" : "map_miage"));
+    console.log("New map: " + currentMap);
 
     // Draw the new map
     draw();
 });
- 
-
-let initialMap = JSON.parse(JSON.stringify(map));  // Store the initial state of the map
 
 let randomTargetsForGhosts = [
     { x: 1 * oneBlockSize, y: 1 * oneBlockSize },
@@ -227,22 +238,21 @@ let eatfood = () => {
 let createScore = () => {
     canvasContext.textAlign = "start";
     canvasContext.textBaseline = "alphabetic";
-    let score = 238;  // to improve
+    let score = 0;  // Initialize score to 0
     for( let i = 0 ; i < map.length ; i++) {
         for( let j = 0 ; j < map[0].length; j++) {
-            // reguler food is worth 1 point and biggest food is worth 5 points
+            // regular food is worth 1 point and biggest food is worth 5 points
             if(map[i][j] == 2) {
-                score -= 1;
+                score += 1;
             } else if(map[i][j] == 3) {
-                score -= 5;
+                score += 5;
             }
         }
     }
     canvasContext.fillStyle = "red";
     canvasContext.font = "30px verdana";
     canvasContext.fillText("Score: " + score, 0, oneBlockSize * map.length + 20);
-}
-
+};
 let drawGhosts = () => {
     for(let i = 0 ; i < ghosts.length ; i++) {
         ghosts[i].draw();
@@ -363,11 +373,19 @@ let restartGame = () => {
     createNewpacman(); // Reset pacman
     createGhosts(); // Reset ghosts
     respawnPallets(); // Respawn pellets
-    // map = JSON.parse(JSON.stringify(initialMap)); // Reset map to initial state
+    map1 = JSON.parse(JSON.stringify(initialMap1));
+    map_miage = JSON.parse(JSON.stringify(initialMap_miage));
     gameInterval = setInterval(gameLoop, 1000 / fps); // Start the game loop again
 };
 
 let respawnPallets = () => {
+    let initialMap;
+    if (currentMap === 'map1') {
+        initialMap = cloneMap(initialMap1);
+    } else {
+        initialMap = cloneMap(initialMap_miage);
+    }
+
     for(let i = 0 ; i < map.length ; i++) {
         for(let j = 0 ; j < map[0].length ; j++) {
             if(initialMap[i][j] == 2 || initialMap[i][j] == 3) {
