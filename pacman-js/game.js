@@ -305,6 +305,12 @@ let draw = () => {
 let gameInterval = setInterval(gameLoop, 1000 / fps);
 
 let drawWalls = () => {
+    let color;
+    if (currentMap === 'map_miage') {
+        color = 'red'; // Replace 'newColor' with the color you want for map_miage
+    } else {
+        color = wallColor; // The original color for map1
+    }
     for( let i = 0 ; i < map.length ; i++) {
         for( let j = 0 ; j < map[0].length; j++) {
             if(map[i][j] == 1) {
@@ -313,7 +319,7 @@ let drawWalls = () => {
                            i * oneBlockSize,
                            oneBlockSize,
                            oneBlockSize,
-                           wallColor );
+                           color );
                 if( j > 0 && map[i][j - 1] == 1) {
                     //then there is a wall on the left
                     createRect(
