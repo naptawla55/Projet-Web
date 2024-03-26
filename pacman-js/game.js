@@ -21,6 +21,7 @@ let WallOffset = (oneBlockSize - wallSpaceWidth) / 2;
 let wallInnerColor = "black"
 let ghosts = [];
 let ghostCount = 4;
+let score = 0;
 
 // direction constants for pacman
 const DIRECTION_RIGHT = 4;
@@ -120,6 +121,9 @@ document.getElementById("switchMapButton").addEventListener("click", () => {
 
     // Reset the game state
     restartGame();
+
+    // Reset the score
+    score = 0;
 
     console.log("New map: " + currentMap);
 
@@ -226,6 +230,9 @@ let eatfood = () => {
                                 powerMode = false;
                                 console.log('Power mode ended.');
                             }, 10000);
+                            score += 5; // Increase score by 5 for power pellet
+                        } else {
+                            score += 1; // Increase score by 1 for regular food
                         }
                         map[i][j] = 0;
                         eatSound.play(); // Play the sound
@@ -238,21 +245,11 @@ let eatfood = () => {
 let createScore = () => {
     canvasContext.textAlign = "start";
     canvasContext.textBaseline = "alphabetic";
-    let score = 0;  // Initialize score to 0
-    for( let i = 0 ; i < map.length ; i++) {
-        for( let j = 0 ; j < map[0].length; j++) {
-            // regular food is worth 1 point and biggest food is worth 5 points
-            if(map[i][j] == 2) {
-                score += 1;
-            } else if(map[i][j] == 3) {
-                score += 5;
-            }
-        }
-    }
     canvasContext.fillStyle = "red";
     canvasContext.font = "30px verdana";
     canvasContext.fillText("Score: " + score, 0, oneBlockSize * map.length + 20);
 };
+
 let drawGhosts = () => {
     for(let i = 0 ; i < ghosts.length ; i++) {
         ghosts[i].draw();
@@ -370,6 +367,8 @@ let createNewpacman = () => {
 // Function to restart the game
 let restartGame = () => {
     clearInterval(gameInterval); // Stop the game loop
+    // Reset the score
+    score = 0;
     createNewpacman(); // Reset pacman
     createGhosts(); // Reset ghosts
     respawnPallets(); // Respawn pellets
