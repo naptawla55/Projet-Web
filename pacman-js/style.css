@@ -36,13 +36,28 @@ main {
     display: flex;
 }
 
+#switchMapButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#switchMapButton:hover {
+    background-color: #0056b3;
+}
+
 #game-container {
     flex-grow: 1;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 460px; 
+    margin-left: 400px; 
 }
 
 #friend-list {

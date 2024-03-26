@@ -21,7 +21,7 @@ let WallOffset = (oneBlockSize - wallSpaceWidth) / 2;
 let wallInnerColor = "black"
 let ghosts = [];
 let ghostCount = 4;
- 
+
 // direction constants for pacman
 const DIRECTION_RIGHT = 4;
 const DIRECTION_UP = 3;
@@ -38,7 +38,7 @@ let ghostLocations = [
     { x: 176, y: 121 },
 ];
 
-let map = [
+let map1 = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
     [1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1],
@@ -63,6 +63,9 @@ let map = [
     [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 ];
+
+let currentMap = 'map1';  // This variable will keep track of which map is currently active
+let map = map1;
 
 let map_miage = [
     [1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1],
@@ -90,7 +93,28 @@ let map_miage = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 ];
 
-let initialMap = JSON.parse(JSON.stringify(map));
+document.getElementById("switchMapButton").addEventListener("click", () => {
+    console.log("Switch Map button clicked");
+    console.log("Current map: " + (map === map1 ? "map1" : "map_miage"));
+
+    // Switch the map
+    if(map === map1) {
+        map = map_miage;
+    } else {
+        map = map1;
+    }
+
+    // Reset the game state
+    restartGame();
+
+    console.log("New map: " + (map === map1 ? "map1" : "map_miage"));
+
+    // Draw the new map
+    draw();
+});
+ 
+
+let initialMap = JSON.parse(JSON.stringify(map));  // Store the initial state of the map
 
 let randomTargetsForGhosts = [
     { x: 1 * oneBlockSize, y: 1 * oneBlockSize },
@@ -99,8 +123,12 @@ let randomTargetsForGhosts = [
     { x: (map[0].length - 2) * oneBlockSize, y: (map.length -2) * oneBlockSize },
 ];
 
+
+
 let gameLoop = () => {
     update()
+    // Clear the screen
+    canvasContext.clearRect(0, 0, canvas.width, canvas.height);
     draw()
 };
 
@@ -335,15 +363,15 @@ let restartGame = () => {
     createNewpacman(); // Reset pacman
     createGhosts(); // Reset ghosts
     respawnPallets(); // Respawn pellets
-    map = JSON.parse(JSON.stringify(initialMap)); // Reset map to initial state
+    // map = JSON.parse(JSON.stringify(initialMap)); // Reset map to initial state
     gameInterval = setInterval(gameLoop, 1000 / fps); // Start the game loop again
 };
 
 let respawnPallets = () => {
     for(let i = 0 ; i < map.length ; i++) {
         for(let j = 0 ; j < map[0].length ; j++) {
-            if(map[i][j] == 2 || map[i][j] == 3) {
-                map[i][j] = 2;
+            if(initialMap[i][j] == 2 || initialMap[i][j] == 3) {
+                map[i][j] = initialMap[i][j];  // Use the initial state to respawn the pallets
             }
         }
     }
