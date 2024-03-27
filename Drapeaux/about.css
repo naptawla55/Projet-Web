@@ -1,28 +1,37 @@
-/* about.css */
+
 .main-content {
-    text-align: center;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column; 
     padding: 20px;
 }
 
+.about-section {
+    max-width: 800px; 
+    text-align: justify; 
+    margin: 20px; 
+}
+
 .about-section h1 {
-    color: #333;
+    text-align: center; 
     margin-bottom: 20px;
 }
 
 .about-section p {
-    color: #555;
     font-size: 16px;
-    line-height: 1.6;
-    max-width: 800px;
-    margin: auto;
-    text-align: justify;
+    line-height: 1.6; 
+    margin-bottom: 20px; 
 }
 
 .footer {
     margin-top: 20px;
     text-align: center;
     padding: 10px;
-    background-color: #f3f3f3;
+    width: 100%; 
+    position: relative; 
+    bottom: 0; 
+    left: 0;
 }
 
 .footer-content p, .footer-content a {
