@@ -1,0 +1,32 @@
+/* about.css */
+.main-content {
+    text-align: center;
+    padding: 20px;
+}
+
+.about-section h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.about-section p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: auto;
+    text-align: justify;
+}
+
+.footer {
+    margin-top: 20px;
+    text-align: center;
+    padding: 10px;
+    background-color: #f3f3f3;
+}
+
+.footer-content p, .footer-content a {
+    color: #333;
+    font-size: 14px;
+    text-decoration: none;
+}
