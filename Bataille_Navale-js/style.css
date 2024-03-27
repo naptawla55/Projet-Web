@@ -100,7 +100,7 @@
 }
 
 .highlight {
-    background-color: rgba(0, 0, 0, 0.3); /* Change this to the color you want for the highlight */
+    background-color: rgba(0, 0, 0, 0.3); 
 }
 
 .block.hit {
@@ -117,4 +117,19 @@
 
 #computer .block.taken.hit {
     background: black !important;
+}
+button {
+    background-color: #FFD700;
+    color: black; 
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    margin: 5px;
+    transition: background-color 0.3s ease; 
+}
+
+button:hover {
+    background-color: #EAC117;
 }
