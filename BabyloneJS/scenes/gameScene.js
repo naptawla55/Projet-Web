@@ -1,3 +1,4 @@
+import "@babylonjs/loaders"
 function CreateGround(scene,BABYLON){
     const { Vector3,Color3, Texture, MeshBuilder, StandardMaterial } = BABYLON
     const ground= MeshBuilder.CreateGround("ground",{ width: 50, height: 50}, scene)
@@ -19,13 +20,14 @@ function CreateGround(scene,BABYLON){
 }
 
 async function gameScene(BABYLON,engine,currentScene){
-    const {Vector3,Scene,MeshBuilder,StandardMaterial,FreeCamera,HemisphericLight} = BABYLON
+    const {Vector3,SceneLoader,Scene,MeshBuilder,StandardMaterial,FreeCamera,HemisphericLight} = BABYLON
     const scene= new Scene(engine)
     const cam= new FreeCamera("camera",new Vector3(0,0,-5),scene)
 
 
     const light = new HemisphericLight("lightsa",new Vector3(0,10,0), scene)
-    const box= MeshBuilder.CreateBox("box",{ size: 1.5}, scene)
+    const Model = await SceneLoader.ImportMeshAsync("","./models/","untitled.glb", scene)
+    console.log(Model)
     CreateGround(scene,BABYLON)
     
     const cameraContainer = MeshBuilder.CreateGround("ground",{width: .5, height: .5}, scene)
