@@ -3,7 +3,7 @@ function CreateGround(scene,BABYLON){
     const ground= MeshBuilder.CreateGround("ground",{ width: 50, height: 50}, scene)
 
     const groundMat = new StandardMaterial("groundMat",scene)
-    const diffuseTex = new Texture("./textures/groundTexDiffuse.jpg",scene)
+    const diffuseTex = new Texture("./textures/grouC:\Users\youss\OneDrive\Documents\GitHub\AppWeb\BabyloneJS\textures\groundTexDiffuse.jpgndTexDiffuse.jpg",scene)
     groundMat.diffuseTexture = diffuseTex
 
     ground.material = groundMat
