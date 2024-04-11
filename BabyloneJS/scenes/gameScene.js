@@ -1,10 +1,12 @@
 function CreateGround(scene,BABYLON){
-    const { Vector3, Texture, MeshBuilder, StandardMaterial } = BABYLON
+    const { Vector3,Color3, Texture, MeshBuilder, StandardMaterial } = BABYLON
     const ground= MeshBuilder.CreateGround("ground",{ width: 50, height: 50}, scene)
 
     const groundMat = new StandardMaterial("groundMat",scene)
     const diffuseTex = new Texture("./textures/groundTexDiffuse.jpg",scene)
     groundMat.diffuseTexture = diffuseTex
+
+    groundMat.specularColor = new Color3(0,0,0)
 
     ground.material = groundMat
 
