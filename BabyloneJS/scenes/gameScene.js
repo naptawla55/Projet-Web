@@ -4,8 +4,9 @@ function CreateGround(scene,BABYLON){
 
     const groundMat = new StandardMaterial("groundMat",scene)
     const diffuseTex = new Texture("./textures/groundTexDiffuse.jpg",scene)
+    const normalTex = new Texture("./textures/groundTexNormal.jpg",scene)
     groundMat.diffuseTexture = diffuseTex
-
+    groundMat.normalTexture = normalTex
     groundMat.specularColor = new Color3(0,0,0)
 
     ground.material = groundMat
