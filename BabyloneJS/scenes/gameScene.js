@@ -1,3 +1,15 @@
+function CreateGround(scene,BABYLON){
+    const { Vector3, Texture, MeshBuilder, StandardMaterial } = BABYLON
+    const ground= MeshBuilder.CreateGround("ground",{ width: 50, height: 50}, scene)
+
+    const groundMat = new StandardMaterial("groundMat",scene)
+    const diffuseTex = new Texture("./textures/groundTexDiffuse.jpg",scene)
+    groundMat.diffuseTexture = diffuseTex
+
+    ground.material = groundMat
+
+}
+
 async function gameScene(BABYLON,engine,currentScene){
     const {Vector3,Scene,MeshBuilder,StandardMaterial,FreeCamera,HemisphericLight} = BABYLON
     const scene= new Scene(engine)
@@ -6,6 +18,7 @@ async function gameScene(BABYLON,engine,currentScene){
 
     const light = new HemisphericLight("lightsa",new Vector3(0,10,0), scene)
     const box= MeshBuilder.CreateBox("box",{ size: 1.5}, scene)
+    CreateGround(scene,BABYLON)
     const ground = MeshBuilder.CreateGround("ground",{width: 50, height: 50}, scene)
     const cameraContainer = MeshBuilder.CreateGround("ground",{width: .5, height: .5}, scene)
     cameraContainer.position = new Vector3(0,15,0)
