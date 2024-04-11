@@ -22,7 +22,7 @@ async function gameScene(BABYLON,engine,currentScene){
         if(theKey === "arrowleft") camHorizontal = -1
         if(theKey === "arrowright") camHorizontal = 1
 
-        cameraContainer.locallyTranslate(new Vector3(camHorizental,0,camVertical))
+        cameraContainer.locallyTranslate(new Vector3(camHorizontal,0,camVertical))
     })
     window.addEventListener("keyup", e => {
         const theKey = e.key.toLowerCase()
